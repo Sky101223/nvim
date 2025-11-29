@@ -35,7 +35,7 @@ require('render-markdown').setup {
   },
   heading = {
     icons = { ' 󰼏 ', ' 󰎨 ', ' 󰼑 ', ' 󰎲 ', ' 󰼓 ', ' 󰎴 ' },
-    border = true,
+    border = false,
     render_modes = true, -- keep rendering while inserting
   },
   checkbox = {
