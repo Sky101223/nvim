@@ -12,6 +12,7 @@ local colors = {
   git_change = utils.get_highlight('diffChanged').fg,
 }
 local dim_color = palette.surface1
+
 -- overseer
 local function OverseerTasksForStatus(st)
   return {
@@ -65,6 +66,7 @@ M.RightPadding = function(child, num_space)
   end
   return result
 end
+
 M.Mode = {
   init = function(self)
     self.mode = vim.fn.mode(1)

@@ -1,6 +1,7 @@
 return {
   'rebelot/heirline.nvim',
   event = { 'BufReadPre', 'BufNewFile' },
+  enabled = true,
   dependencies = {
     { 'echasnovski/mini.icons', opts = {} },
     { 'linrongbin16/lsp-progress.nvim', opts = {} },
@@ -15,9 +16,10 @@ return {
   end,
   config = function()
     vim.opt.cmdheight = 0
+
     require('heirline').setup {
       statusline = require 'custom.config.heirline.statusline',
-      -- tabline = require 'custom.config.heirline.tabline',
+      tabline = require 'custom.config.heirline.nord.tabline',
     }
   end,
 }

@@ -1,10 +1,13 @@
 local header = [[
-░  ░░░░░░░░  ░░░░  ░░░      ░░░  ░░░░░░░
-▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒▒▒▒
-▓  ▓▓▓▓▓▓▓▓        ▓▓  ▓▓▓▓▓▓▓▓       ▓▓
-█  ████████  ████  ██  ████  ██  ████  █
-█        ██  ████  ███      ███       ██
+    ___       ___       ___       ___       ___       ___   
+   ╱╲__╲     ╱╲  ╲     ╱╲  ╲     ╱╲__╲     ╱╲  ╲     ╱╲__╲  
+  ╱:│ _│_   ╱::╲  ╲   ╱::╲  ╲   ╱:╱ _╱_   _╲:╲  ╲   ╱::L_L_ 
+ ╱::│╱╲__╲ ╱::╲:╲__╲ ╱:╱╲:╲__╲ │::L╱╲__╲ ╱╲╱::╲__╲ ╱:╱L:╲__╲
+ ╲╱│::╱  ╱ ╲:╲:╲╱  ╱ ╲:╲╱:╱  ╱ │::::╱  ╱ ╲::╱╲╱__╱ ╲╱_╱:╱  ╱
+   │:╱  ╱   ╲:╲╱  ╱   ╲::╱  ╱   L;;╱__╱   ╲:╲__╲     ╱:╱  ╱ 
+   ╲╱__╱     ╲╱__╱     ╲╱__╱               ╲╱__╱     ╲╱__╱  
 ]]
+
 local cwd = vim.fn.getcwd(0)
 if cwd and cwd:find 'Obsidian' then
   header = [[
@@ -58,6 +61,8 @@ require('snacks').setup {
     sections = {
       { section = 'header' },
       { icon = ' ', title = 'Keymaps', section = 'keys', indent = 2, padding = 1 },
+      { text = '孑然一身，瓦碎终合', padding = 1 },
+      { section = 'startup' },
     },
   },
   image = {
@@ -122,10 +127,10 @@ require('snacks').setup {
       backdrop = false,
     },
   },
-  -- statuscolumn = {
-  --   left = { 'mark', 'git' },
-  --   right = {},
-  --   folds = { open = true, git_hl = true },
-  --   git = { patterns = { 'GitSign', 'MiniDiffSign' } },
-  -- },
+  statuscolumn = {
+    left = { 'mark', 'git' },
+    right = {},
+    folds = { open = true, git_hl = true },
+    git = { patterns = { 'GitSign', 'MiniDiffSign' } },
+  },
 }

@@ -1,6 +1,6 @@
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
-local custom_utils = require("custom.utils")
+local custom_utils = require 'custom.utils'
 
 local function augroup(name)
   return vim.api.nvim_create_augroup('lazyvim_' .. name, { clear = true })
@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
-    vim.highlight.on_yank({higroup = "CurSearch"})
+    vim.highlight.on_yank { higroup = 'CurSearch' }
   end,
 })
 
@@ -90,8 +90,8 @@ vim.api.nvim_create_autocmd('VimResized', {
     vim.cmd 'wincmd =' -- Equalize window sizes
 
     -- DAP UI
-    custom_utils.func_on_window('dapui_stacks', function ()
-        require 'dapui'.open({ reset = true })
+    custom_utils.func_on_window('dapui_stacks', function()
+      require('dapui').open { reset = true }
     end)
 
     -- OverseerList

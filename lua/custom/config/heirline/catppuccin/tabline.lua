@@ -1,24 +1,6 @@
 local utils = require 'heirline.utils'
 local palette = require('catppuccin.palettes').get_palette 'mocha'
--- local nord_palette = require 'nord.named_colors'
--- local palette = {
---   base = nord_palette.black,
---   surface1 = nord_palette.dark_gray,
---   surface2 = nord_palette.gray,
---   text = nord_palette.darkest_white,
---   subtext0 = nord_palette.light_gray,
---   blue = nord_palette.glacier,
---   mauve = nord_palette.purple,
---   red = nord_palette.red,
---   pink = nord_palette.purple,
---   peach = nord_palette.orange,
---   green = nord_palette.green,
---   yellow = nord_palette.yellow,
---   maroon = nord_palette.red,
---   gray = nord_palette.light_gray,
---   sky = nord_palette.off_blue,
--- }
-local components = require 'custom.config.heirline.components'
+local components = require 'custom.config.heirline.catppuccin.components'
 
 -- a nice "x" button to close the buffer
 local TablineCloseButton = {
