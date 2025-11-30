@@ -109,3 +109,13 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('n', '<CR>', '<CR>', { buffer = true, desc = 'Default Enter in quickfix' })
   end,
 })
+
+-- Cpp header file
+vim.api.nvim_create_autocmd('BufRead', {
+  pattern = '*/include/*',
+  callback = function()
+    if vim.bo.filetype == '' then
+      vim.bo.filetype = 'cpp'
+    end
+  end,
+})
