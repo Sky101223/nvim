@@ -1,7 +1,7 @@
 return {
   'shaunsingh/nord.nvim',
   priority = 1000,
-  enabled = true,
+  enabled = false,
   config = function()
     vim.g.nord_disable_background = true
     require('nord').set()

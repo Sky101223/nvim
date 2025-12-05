@@ -1,4 +1,17 @@
-local palette = require('tokyonight.colors').setup()
+local colours_module = require 'everforest.colours'
+local palette
+
+if colours_module.base_palette then
+  palette = colours_module.base_palette.dark
+else
+  local options = {
+    background = 'medium',
+    colours_override = function(palette)
+      return palette
+    end,
+  }
+  palette = colours_module.generate_palette(options, 'dark')
+end
 local utils = require 'heirline.utils'
 local conditions = require 'heirline.conditions'
 local icons = require 'custom.ui.icons'
@@ -11,8 +24,7 @@ local colors = {
   git_add = utils.get_highlight('diffAdded').fg,
   git_change = utils.get_highlight('diffChanged').fg,
 }
-local dim_color = palette.terminal_black
--- local dim_color = palette.bg_dark
+local dim_color = palette.grey0
 
 -- overseer
 local function OverseerTasksForStatus(st)
@@ -47,7 +59,7 @@ M.ScrollBar = {
     local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
     return string.rep(self.sbar[i], 2)
   end,
-  hl = { fg = palette.yellow, bg = palette.bg },
+  hl = { fg = palette.yellow, bg = palette.none },
 }
 
 -- Spacing providers
@@ -108,18 +120,18 @@ M.Mode = {
     mode_colors = {
       n = dim_color,
       nt = dim_color,
-      i = palette.blue,
-      v = palette.magenta,
-      V = palette.magenta,
-      ['\22'] = palette.magenta,
+      i = palette.green,
+      v = palette.purple,
+      V = palette.purple,
+      ['\22'] = palette.purple,
       c = palette.red,
-      s = palette.orange,
-      S = palette.orange,
-      ['\19'] = palette.orange,
-      R = palette.orange,
-      r = palette.orange,
+      s = palette.bule,
+      S = palette.yellow,
+      ['\19'] = palette.yellow,
+      R = palette.yellow,
+      r = palette.yellow,
       ['!'] = palette.red,
-      t = palette.blue,
+      t = palette.green,
     },
   },
   provider = function(self)
@@ -127,7 +139,7 @@ M.Mode = {
   end,
   hl = function(self)
     local mode = self.mode:sub(1, 1)
-    return { fg = palette.bg, bg = self.mode_colors[mode], bold = true }
+    return { fg = palette.bg1, bg = self.mode_colors[mode], bold = true }
   end,
   update = {
     'ModeChanged',
@@ -159,7 +171,7 @@ M.MacroRecording = {
       end,
       hl = { fg = palette.red, italic = false, bold = true },
     },
-    hl = { fg = palette.fg, bg = palette.bg },
+    hl = { fg = palette.fg, bg = palette.bg0 },
   },
   update = { 'RecordingEnter', 'RecordingLeave' },
 }
@@ -226,7 +238,7 @@ M.CodeiumStatus = {
     if self.codeium_status == ' ON' then
       return { fg = palette.green }
     elseif self.codeium_status == ' OFF' then
-      return { fg = palette.fg_dark }
+      return { fg = palette.grey2 }
     else
       return { fg = palette.red }
     end
@@ -367,7 +379,7 @@ M.FilePath = {
   end,
   hl = function(self)
     return {
-      fg = self.is_active and palette.fg or palette.fg_dark,
+      fg = self.is_active and palette.fg or palette.grey2,
       bold = self.is_active or self.is_visible,
       italic = self.is_active,
     }
@@ -416,29 +428,6 @@ M.FileFlags = {
     end,
     hl = { fg = palette.fg },
   },
-}
-
-M.Overseer = {
-  condition = function()
-    return package.loaded.overseer
-  end,
-  init = function(self)
-    local tasks = require('overseer.task_list').list_tasks { unique = true }
-    local tasks_by_status = require('overseer.util').tbl_group_by(tasks, 'status')
-    self.tasks = tasks_by_status
-  end,
-  static = {
-    symbols = {
-      ['CANCELED'] = '  ',
-      ['FAILURE'] = '  ',
-      ['SUCCESS'] = '  ',
-      ['RUNNING'] = '  ',
-    },
-  },
-  M.RightPadding(OverseerTasksForStatus 'CANCELED'),
-  M.RightPadding(OverseerTasksForStatus 'RUNNING'),
-  M.RightPadding(OverseerTasksForStatus 'SUCCESS'),
-  M.RightPadding(OverseerTasksForStatus 'FAILURE'),
 }
 
 M.FileNameBlock = {
@@ -493,7 +482,7 @@ M.SearchOccurrence = {
   condition = function()
     return vim.v.hlsearch == 1
   end,
-  hl = { fg = palette.blue },
+  hl = { fg = palette.green },
   provider = function()
     local sinfo = vim.fn.searchcount { maxcount = 0 }
 
@@ -516,7 +505,7 @@ M.SimpleIndicator = {
   condition = function()
     return vim.g.simple_indicator_on
   end,
-  hl = { fg = palette.blue },
+  hl = { fg = palette.green },
   provider = '',
 }
 
@@ -551,6 +540,29 @@ M.LspProgress = {
     end),
   },
   hl = { fg = dim_color, bold = false },
+}
+
+M.Overseer = {
+  condition = function()
+    return package.loaded.overseer
+  end,
+  init = function(self)
+    local tasks = require('overseer.task_list').list_tasks { unique = true }
+    local tasks_by_status = require('overseer.util').tbl_group_by(tasks, 'status')
+    self.tasks = tasks_by_status
+  end,
+  static = {
+    symbols = {
+      ['CANCELED'] = '  ',
+      ['FAILURE'] = '  ',
+      ['SUCCESS'] = '  ',
+      ['RUNNING'] = '  ',
+    },
+  },
+  M.RightPadding(OverseerTasksForStatus 'CANCELED'),
+  M.RightPadding(OverseerTasksForStatus 'RUNNING'),
+  M.RightPadding(OverseerTasksForStatus 'SUCCESS'),
+  M.RightPadding(OverseerTasksForStatus 'FAILURE'),
 }
 
 return M

@@ -19,7 +19,7 @@ return {
 
     require('heirline').setup {
       statusline = require 'custom.config.heirline.statusline',
-      tabline = require 'custom.config.heirline.nord.tabline',
+      -- tabline = require 'custom.config.heirline.nord.tabline',
     }
   end,
 }
