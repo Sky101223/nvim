@@ -5,12 +5,16 @@
       "src": "https://github.com/archie-judd/blink-cmp-words"
     },
     "blink.cmp": {
-      "rev": "327fff91fe6af358e990be7be1ec8b78037d2138",
+      "rev": "57d900e6982f63c7cde689aa06d8af76c8da083e",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "bullets.vim": {
       "rev": "1c13e510e11d08b0259e8e627f128359c5521962",
       "src": "https://github.com/bullets-vim/bullets.vim"
+    },
+    "comfy-line-numbers.nvim": {
+      "rev": "3c51fa4104b97ddaccb66a6b34552e3eafd5b645",
+      "src": "https://github.com/mluders/comfy-line-numbers.nvim"
     },
     "conform.nvim": {
       "rev": "ffe26e8df8115c9665d24231f8a49fadb2d611ce",

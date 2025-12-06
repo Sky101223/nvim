@@ -1,19 +1,27 @@
+-- Basic Configuration
 require 'config.options'
 require 'config.keymaps'
 require 'config.autocmds'
-require 'config.lsp'
 
--- core plugins
-require 'plugins.everforest'
-require 'plugins.mini'
-require 'plugins.treesitter'
-require 'plugins.oil'
-require 'plugins.heirline'
-require 'plugins.snacks'
-require 'plugins.completion'
-require 'plugins.meow'
-require 'plugins.markdown'
-require 'plugins.autopairs'
-require 'plugins.conform'
-require 'plugins.todo-comments'
-require 'plugins.which-key'
+-- Theme
+require 'plugins.everforest' -- Color theme
+require 'plugins.heirline' -- Statusline
+
+-- Language
+require 'plugins.treesitter' -- Treesitter
+require 'plugins.completion' -- Blink
+require 'plugins.autopairs' -- Auto Pair
+require 'plugins.conform' -- Conform
+require 'plugins.markdown' -- Markdown Language
+require 'plugins.meow' -- Helper
+require 'config.lsp' -- LSP
+
+-- Editor Layout & Search
+require 'plugins.oil' -- File explorer
+require 'plugins.comfylnum' -- Jump
+require 'plugins.snacks' -- Tools
+require 'plugins.which-key' -- Keybinding hints
+
+-- Editing Utilities
+require 'plugins.mini' -- Icons
+require 'plugins.todo-comments' -- Comments
