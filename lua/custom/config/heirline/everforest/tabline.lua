@@ -1,6 +1,19 @@
 local utils = require 'heirline.utils'
-local palette = require 'nord.named_colors'
-local components = require 'custom.config.heirline.nord.components'
+local colours_module = require 'everforest.colours'
+local palette
+
+if colours_module.base_palette then
+  palette = colours_module.base_palette.dark
+else
+  local options = {
+    background = 'hard',
+    colours_override = function(palette)
+      return palette
+    end,
+  }
+  palette = colours_module.generate_palette(options, 'dark')
+end
+local components = require 'custom.config.heirline.everforest.components'
 
 -- a nice "x" button to close the buffer
 local TablineCloseButton = {
@@ -12,7 +25,7 @@ local TablineCloseButton = {
     provider = '✗ ',
     hl = function(self)
       return {
-        fg = self.is_active and palette.white or palette.light_gray,
+        fg = self.is_active and palette.white or palette.grey0,
         bold = self.is_active or self.is_visible,
         italic = self.is_active,
       }
@@ -39,7 +52,7 @@ local TablineBufferLeftIndicator = {
     if self.is_active then
       return { fg = palette.yellow, bold = true }
     else
-      return { fg = palette.light_gray, bold = false }
+      return { fg = palette.grey0, bold = false }
     end
   end,
 }
@@ -48,8 +61,8 @@ local TablineBufferBlock = { TablineBufferLeftIndicator, components.TablineFileN
 -- and here we go
 local BufferLine = utils.make_buflist(
   TablineBufferBlock,
-  { provider = ' ', hl = { fg = palette.gray } }, -- left truncation, optional (defaults to "<")
-  { provider = ' ', hl = { fg = palette.gray } } -- right trunctation, also optional (defaults to ...... yep, ">")
+  { provider = ' ', hl = { fg = palette.gray1 } }, -- left truncation, optional (defaults to "<")
+  { provider = ' ', hl = { fg = palette.gray1 } } -- right trunctation, also optional (defaults to ...... yep, ">")
   -- by the way, open a lot of buffers and try clicking them ;)
 )
 
@@ -93,7 +106,7 @@ local TabLineOffset = {
 
     if vim.bo[bufnr].filetype == 'neo-tree' then
       self.title = ''
-      self.hl = { bg = palette.black }
+      self.hl = { bg = palette.bg2 }
       return true
       -- elseif vim.bo[bufnr].filetype == "TagBar" then
       --     ...

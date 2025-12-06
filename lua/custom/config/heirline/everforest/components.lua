@@ -5,7 +5,7 @@ if colours_module.base_palette then
   palette = colours_module.base_palette.dark
 else
   local options = {
-    background = 'medium',
+    background = 'hard',
     colours_override = function(palette)
       return palette
     end,
