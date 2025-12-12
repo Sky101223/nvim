@@ -255,10 +255,10 @@ M.Git = {
   end,
 
   hl = function(self)
-    return { fg = self.has_changes and palette.red or dim_color }
+    return { fg = self.has_changes and palette.maroon or dim_color }
   end,
 
-  {
+  { -- git branch name
     provider = function(self)
       if self.has_changes then
         return '󰘬 ' .. self.status_dict.head .. '*'

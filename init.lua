@@ -14,6 +14,7 @@ require 'plugins.autopairs' -- Auto Pair
 require 'plugins.conform' -- Conform
 require 'plugins.markdown' -- Markdown Language
 require 'plugins.meow' -- Helper
+-- require 'plugins.oversitter'
 require 'config.lsp' -- LSP
 
 -- Editor Layout & Search

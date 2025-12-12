@@ -1,6 +1,6 @@
 vim.pack.add {
   { src = 'https://github.com/archie-judd/blink-cmp-words' },
-  { src = 'https://github.com/saghen/blink.cmp' },
+  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1.*' },
 }
 
 vim.api.nvim_create_autocmd({ 'InsertEnter', 'CmdlineEnter' }, {
