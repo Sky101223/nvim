@@ -14,6 +14,8 @@ overseer.setup {
     'python',
     'grun_option',
     'run_script',
+    'cpp',
+    -- 'cmake',
   },
   component_aliases = {
     default = {
@@ -56,6 +58,14 @@ overseer.setup {
 overseer.add_template_hook({
   module = '^make$',
 }, function(task_defn, util)
+  local cwd = task_defn.cwd or vim.fn.getcwd()
+  if vim.fn.filereadable(cwd .. '/build/Makefile') == 1 then
+    task_defn.cwd = cwd .. '/build'
+  end
+
+  local log_path = (task_defn.cwd or vim.fn.getcwd()) .. '/make.log'
+  util.add_component(task_defn, { 'on_output_write_file', filename = log_path })
+
   util.add_component(task_defn, 'task_list_on_start')
   util.add_component(task_defn, { 'on_output_write_file', filename = task_defn.cmd[1] .. '.log' })
   util.add_component(task_defn, { 'on_output_quickfix', open_on_exit = 'failure' })

@@ -46,6 +46,7 @@ vim.api.nvim_create_autocmd('InsertEnter', {
         { '<!--', '-->', ft = { 'markdown', 'html' }, space = true },
         { '"""', '"""', newline = true, ft = { 'python' } },
         { "'''", "'''", newline = true, ft = { 'python' } },
+        { '/*', '*/', newline = true, ft = { 'c', 'cpp' } },
       },
     }
   end,

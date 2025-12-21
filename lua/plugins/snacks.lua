@@ -45,7 +45,7 @@ require('snacks').setup {
     doc = { enabled = true, inline = false, float = false, max_width = 80, max_height = 20 },
   },
   indent = {
-    enabled = false,
+    enabled = true,
     indent = { enabled = false },
     animate = { duration = { step = 10, duration = 100 } },
     scope = { enabled = true, char = '┊', underline = false, only_current = true, priority = 1000 },

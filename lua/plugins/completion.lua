@@ -1,6 +1,6 @@
 vim.pack.add {
   { src = 'https://github.com/archie-judd/blink-cmp-words' },
-  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1.*' },
+  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1.x' },
 }
 
 vim.api.nvim_create_autocmd({ 'InsertEnter', 'CmdlineEnter' }, {
@@ -18,6 +18,7 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'CmdlineEnter' }, {
             scrollbar = false,
           },
         },
+
         menu = {
           border = 'single',
           auto_show = true,
@@ -25,13 +26,16 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'CmdlineEnter' }, {
           scrollbar = false,
         },
       },
+
       keymap = {
         ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
         ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
       },
+
       signature = {
         enabled = true,
       },
+
       cmdline = {
         completion = {
           menu = {
@@ -40,6 +44,11 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'CmdlineEnter' }, {
           },
         },
       },
+
+      term = {
+        enabled = true,
+      },
+
       sources = {
         providers = {
           snippets = {

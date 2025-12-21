@@ -33,7 +33,11 @@ vim.diagnostic.config {
 }
 
 require('mason').setup()
+
+vim.lsp.enable 'lua_ls'
 vim.lsp.enable 'clangd'
+vim.lsp.enable 'pyright'
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('SetupLSP', {}),
   callback = function(event)

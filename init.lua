@@ -5,6 +5,8 @@ require 'config.autocmds'
 
 -- Theme
 require 'plugins.everforest' -- Color theme
+-- require 'plugins.nord' -- Color theme
+-- require 'plugins.catppuccin'
 require 'plugins.heirline' -- Statusline
 
 -- Language
@@ -14,7 +16,8 @@ require 'plugins.autopairs' -- Auto Pair
 require 'plugins.conform' -- Conform
 require 'plugins.markdown' -- Markdown Language
 require 'plugins.meow' -- Helper
--- require 'plugins.oversitter'
+require 'plugins.overseer' -- Overseer
+require 'plugins.debugging'
 require 'config.lsp' -- LSP
 
 -- Editor Layout & Search
