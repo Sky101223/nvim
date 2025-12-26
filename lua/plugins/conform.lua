@@ -46,6 +46,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'InsertEnter' }, {
         toml = { 'taplo' },
         tex = { 'tex-fmt' },
         cmake = { 'cmakelang' },
+        rust = { 'rust-analyzer' },
       },
       formatters = {
         cbfmt = { command = 'cbfmt', args = { '-w', '--config', vim.fn.expand '~' .. '/.config/cbfmt.toml', '$FILENAME' } },
@@ -71,6 +72,7 @@ end, {
   desc = 'Disable autoformat-on-save',
   bang = true,
 })
+
 vim.api.nvim_create_user_command('ConformEnable', function()
   vim.b.disable_autoformat = false
   vim.g.disable_autoformat = false
