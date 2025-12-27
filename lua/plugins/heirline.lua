@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
     require('lsp-progress').setup()
     require('heirline').setup {
       statusline = require 'config.heirline.statusline',
+      tabline = require 'config.heirline.everforest.tabline',
     }
   end,
 })
