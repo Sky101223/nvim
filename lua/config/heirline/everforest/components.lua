@@ -453,15 +453,6 @@ M.FilePathBlock = {
 }
 
 M.TablineFileNameBlock = vim.tbl_extend('force', M.FileNameBlock, {
-  hl = function(self)
-    if self.is_active then
-      return {
-        fg = self.is_active and palette.yellow or palette.grey0,
-        bold = self.is_active or self.is_visible,
-      }
-    end
-  end,
-
   on_click = {
     callback = function(_, minwid, _, button)
       if button == 'm' then
