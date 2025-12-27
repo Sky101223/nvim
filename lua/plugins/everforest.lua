@@ -1,6 +1,6 @@
-vim.pack.add({
-    { src = "https://github.com/neanias/everforest-nvim" }
-})
+vim.pack.add {
+  { src = 'https://github.com/neanias/everforest-nvim' },
+}
 
 require('everforest').setup {
   background = 'hard',
