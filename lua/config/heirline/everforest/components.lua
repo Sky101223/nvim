@@ -171,7 +171,7 @@ M.MacroRecording = {
       end,
       hl = { fg = palette.red, italic = false, bold = true },
     },
-    hl = { fg = palette.fg, bg = palette.bg0 },
+    hl = { fg = palette.fg, bg = palette.none },
   },
   update = { 'RecordingEnter', 'RecordingLeave' },
 }

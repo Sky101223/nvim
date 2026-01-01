@@ -15,9 +15,8 @@ require 'plugins.completion' -- Blink
 require 'plugins.autopairs' -- Auto Pair
 require 'plugins.conform' -- Conform
 require 'plugins.markdown' -- Markdown Language
-require 'plugins.meow' -- Helper
 require 'plugins.overseer' -- Overseer
-require 'plugins.debugging'
+require 'plugins.debugging' -- Debug
 require 'config.lsp' -- LSP
 
 -- Editor Layout & Search

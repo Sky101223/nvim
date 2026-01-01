@@ -1,6 +1,7 @@
 vim.pack.add {
   { src = 'https://github.com/mason-org/mason.nvim' },
   { src = 'https://github.com/neovim/nvim-lspconfig' },
+  { src = 'https://github.com/nvimdev/lspsaga.nvim' },
 }
 
 vim.diagnostic.config {
@@ -33,6 +34,16 @@ vim.diagnostic.config {
 }
 
 require('mason').setup()
+
+require('lspsaga').setup {
+  ui = {
+    code_action = '',
+  },
+  lightbulb = {
+    enable = false,
+    virtual_text = false,
+  },
+}
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('SetupLSP', {}),
