@@ -9,5 +9,4 @@ else
   vim.lsp.enable 'clang-format'
 end
 
-require('meow.yarn').setup {}
 vim.lsp.enable 'clangd'
