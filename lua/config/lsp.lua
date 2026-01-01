@@ -36,6 +36,9 @@ vim.diagnostic.config {
 require('mason').setup()
 
 require('lspsaga').setup {
+  symbol_in_winbar = {
+    separator = ' ',
+  },
   ui = {
     code_action = '',
   },
