@@ -13,7 +13,7 @@ else
   }
   palette = colours_module.generate_palette(options, 'dark')
 end
-local components = require 'config.heirline.everforest.components'
+local components = require 'config.heirline.components'
 
 -- a nice "x" button to close the buffer
 local TablineCloseButton = {
@@ -77,26 +77,26 @@ end
 local buflist_cache = {}
 
 -- setup an autocmd that updates the buflist_cache every time that buffers are added/removed
-vim.api.nvim_create_autocmd({ 'UIEnter', 'BufAdd', 'BufDelete' }, {
-  callback = function()
-    vim.schedule(function()
-      local buffers = get_bufs()
-      for i, v in ipairs(buffers) do
-        buflist_cache[i] = v
-      end
-      for i = #buffers + 1, #buflist_cache do
-        buflist_cache[i] = nil
-      end
+-- vim.api.nvim_create_autocmd({ 'UIEnter', 'BufAdd', 'BufDelete' }, {
+--   callback = function()
+--     vim.schedule(function()
+--       local buffers = get_bufs()
+--       for i, v in ipairs(buffers) do
+--         buflist_cache[i] = v
+--       end
+--       for i = #buffers + 1, #buflist_cache do
+--         buflist_cache[i] = nil
+--       end
 
-      -- check how many buffers we have and set showtabline accordingly
-      if #buflist_cache > 1 then
-        vim.o.showtabline = 2 -- always
-      elseif vim.o.showtabline ~= 1 then -- don't reset the option if it's already at default value
-        vim.o.showtabline = 1 -- only when #tabpages > 1
-      end
-    end)
-  end,
-})
+-- check how many buffers we have and set showtabline accordingly
+-- if #buflist_cache > 1 then
+--   vim.o.showtabline = 2 -- always
+-- elseif vim.o.showtabline ~= 1 then -- don't reset the option if it's already at default value
+--   vim.o.showtabline = 1 -- only when #tabpages > 1
+-- end
+--     end)
+--   end,
+-- })
 
 local TabLineOffset = {
   condition = function(self)

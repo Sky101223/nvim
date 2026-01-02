@@ -6,7 +6,7 @@ vim.pack.add {
 vim.opt.cmdheight = 0
 
 vim.keymap.set('n', '<leader>tt', function()
-  vim.o.showtabline = vim.o.showtabline == 0 and 2 or 0
+  vim.o.showtabline = vim.o.showtabline == 2 and 0 or 2
 end, { desc = 'Toggle tabline' })
 
 vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
     require('lsp-progress').setup()
     require('heirline').setup {
       statusline = require 'config.heirline.statusline',
+      tabline = require 'config.heirline.tabline',
     }
   end,
 })
