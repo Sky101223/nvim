@@ -1,6 +1,6 @@
 local utils = require 'heirline.utils'
 local palette = require 'nord.named_colors'
-local components = require 'custom.config.heirline.nord.components'
+local components = require 'config.heirline.nord.components'
 
 -- a nice "x" button to close the buffer
 local TablineCloseButton = {
