@@ -24,6 +24,7 @@ require('snacks').setup {
         { icon = ' ', key = 'o', desc = 'Find history', action = 'lua Snacks.picker.recent()' },
         { icon = ' ', key = 'e', desc = 'New file', action = ':enew' },
         { icon = ' ', key = 'M', desc = 'Mason', action = ':Mason' },
+        { icon = '', key = 'l', desc = 'LeetCode', action = ':Leet' },
         { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
       },
       header = [[

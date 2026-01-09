@@ -28,3 +28,5 @@ require 'plugins.which-key' -- Keybinding hints
 -- Editing Utilities
 require 'plugins.mini' -- Icons
 require 'plugins.todo-comments' -- Comments
+require 'plugins.leetcode' -- LeetCode
+require 'plugins.translate' -- Translate
