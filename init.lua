@@ -29,4 +29,4 @@ require 'plugins.which-key' -- Keybinding hints
 require 'plugins.mini' -- Icons
 require 'plugins.todo-comments' -- Comments
 require 'plugins.leetcode' -- LeetCode
-require 'plugins.translate' -- Translate
+-- require 'plugins.translate' -- Translate (Some errors)
