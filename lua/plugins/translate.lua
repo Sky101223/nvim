@@ -4,13 +4,10 @@ vim.pack.add {
 }
 
 require('Trans').setup {
-  dict = {
-    auto_install = true,
-    path = vim.fn.stdpath 'data' .. '/Trans/dict/',
-  },
+  -- dir = vim.fn.stdpath 'data' .. '/Trans/dict/',
 }
 
-require('Trans').install()
+-- require('Trans').install()
 
 vim.keymap.set({ 'n', 'x' }, '<leader>mm', '<Cmd>Translate<CR>', { desc = '󰊿 Translate' })
 vim.keymap.set({ 'n', 'x' }, '<leader>mk', '<Cmd>TransPlay<CR>', { desc = ' Auto Play' })

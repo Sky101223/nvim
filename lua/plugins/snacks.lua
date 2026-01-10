@@ -21,7 +21,7 @@ require('snacks').setup {
     preset = {
       keys = {
         { icon = '󰈞 ', key = 'f', desc = 'Find files', action = ':lua Snacks.picker.smart()' },
-        { icon = ' ', key = 'o', desc = 'Find history', action = 'lua Snacks.picker.recent()' },
+        { icon = ' ', key = 'o', desc = 'Find history', action = ':lua Snacks.picker.recent()' },
         { icon = ' ', key = 'e', desc = 'New file', action = ':enew' },
         { icon = ' ', key = 'M', desc = 'Mason', action = ':Mason' },
         { icon = '', key = 'l', desc = 'LeetCode', action = ':Leet' },
