@@ -3,8 +3,6 @@ vim.pack.add {
   { src = 'https://github.com/rebelot/heirline.nvim' },
 }
 
-vim.opt.cmdheight = 0
-
 vim.keymap.set('n', '<leader>tt', function()
   vim.o.showtabline = vim.o.showtabline == 2 and 0 or 2
 end, { desc = 'Toggle tabline' })

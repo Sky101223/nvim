@@ -3,10 +3,14 @@ vim.pack.add {
 }
 -- Picker
 require('snacks').setup {
+  git = { enabled = true },
   notifier = {},
   picker = {
     matcher = { frecency = true, cwd_bonus = true, history_bonus = true },
     formatters = { icon_width = 3 },
+    find_files = {
+      search_dirs = { vim.fn.getcwd() },
+    },
     win = {
       input = {
         keys = {
@@ -46,7 +50,7 @@ require('snacks').setup {
     doc = { enabled = true, inline = false, float = false, max_width = 80, max_height = 20 },
   },
   indent = {
-    enabled = true,
+    enabled = false,
     indent = { enabled = false },
     animate = { duration = { step = 10, duration = 100 } },
     scope = { enabled = true, char = '┊', underline = false, only_current = true, priority = 1000 },

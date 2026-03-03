@@ -1,7 +1,5 @@
--- local components = require 'custom.config.heirline.nord.components'
-local components = require 'config.heirline.components'
--- local components = require 'custom.config.heirline.components_tokyonight'
--- local components = require 'custom.config.heirline.catppuccin.components'
+-- local components = require 'config.heirline.everforest.components'
+local components = require 'config.heirline.catppuccin.components'
 
 return { -- statusline
   components.RightPadding(components.Mode, 1),

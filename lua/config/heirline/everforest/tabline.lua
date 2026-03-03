@@ -1,6 +1,19 @@
 local utils = require 'heirline.utils'
-local palette = require('catppuccin.palettes').get_palette 'mocha'
-local components = require 'config.heirline.catppuccin.components'
+local colours_module = require 'everforest.colours'
+local palette
+
+if colours_module.base_palette then
+  palette = colours_module.base_palette.dark
+else
+  local options = {
+    background = 'hard',
+    colours_override = function(palette)
+      return palette
+    end,
+  }
+  palette = colours_module.generate_palette(options, 'dark')
+end
+local components = require 'config.heirline.components'
 
 -- a nice "x" button to close the buffer
 local TablineCloseButton = {
@@ -11,7 +24,11 @@ local TablineCloseButton = {
   {
     provider = '✗ ',
     hl = function(self)
-      return { fg = self.is_active and palette.text or palette.surface2, bold = self.is_active or self.is_visible, italic = self.is_active }
+      return {
+        fg = self.is_active and palette.white or palette.grey0,
+        bold = self.is_active or self.is_visible,
+        italic = self.is_active,
+      }
     end,
     on_click = {
       callback = function(_, minwid)
@@ -35,7 +52,7 @@ local TablineBufferLeftIndicator = {
     if self.is_active then
       return { fg = palette.yellow, bold = true }
     else
-      return { fg = palette.surface2, bold = false }
+      return { fg = palette.grey0, bold = false }
     end
   end,
 }
@@ -44,8 +61,8 @@ local TablineBufferBlock = { TablineBufferLeftIndicator, components.TablineFileN
 -- and here we go
 local BufferLine = utils.make_buflist(
   TablineBufferBlock,
-  { provider = ' ', hl = { fg = 'gray' } }, -- left truncation, optional (defaults to "<")
-  { provider = ' ', hl = { fg = 'gray' } } -- right trunctation, also optional (defaults to ...... yep, ">")
+  { provider = ' ', hl = { fg = palette.gray1 } }, -- left truncation, optional (defaults to "<")
+  { provider = ' ', hl = { fg = palette.gray1 } } -- right trunctation, also optional (defaults to ...... yep, ">")
   -- by the way, open a lot of buffers and try clicking them ;)
 )
 
@@ -70,13 +87,13 @@ local buflist_cache = {}
 --       for i = #buffers + 1, #buflist_cache do
 --         buflist_cache[i] = nil
 --       end
---
---       -- check how many buffers we have and set showtabline accordingly
---       if #buflist_cache > 1 then
---         vim.o.showtabline = 2 -- always
---       elseif vim.o.showtabline ~= 1 then -- don't reset the option if it's already at default value
---         vim.o.showtabline = 1 -- only when #tabpages > 1
---       end
+
+-- check how many buffers we have and set showtabline accordingly
+-- if #buflist_cache > 1 then
+--   vim.o.showtabline = 2 -- always
+-- elseif vim.o.showtabline ~= 1 then -- don't reset the option if it's already at default value
+--   vim.o.showtabline = 1 -- only when #tabpages > 1
+-- end
 --     end)
 --   end,
 -- })
@@ -89,7 +106,7 @@ local TabLineOffset = {
 
     if vim.bo[bufnr].filetype == 'neo-tree' then
       self.title = ''
-      self.hl = { bg = palette.base }
+      self.hl = { bg = palette.bg2 }
       return true
       -- elseif vim.bo[bufnr].filetype == "TagBar" then
       --     ...

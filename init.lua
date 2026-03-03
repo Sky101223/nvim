@@ -4,9 +4,9 @@ require 'config.keymaps'
 require 'config.autocmds'
 
 -- Theme
-require 'plugins.everforest' -- Color theme
+-- require 'plugins.everforest' -- Color theme
 -- require 'plugins.nord' -- Color theme
--- require 'plugins.catppuccin'
+require 'plugins.catppuccin'
 require 'plugins.heirline' -- Statusline
 
 -- Language
