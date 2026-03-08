@@ -163,7 +163,7 @@ M.MacroRecording = {
       end,
       hl = { fg = palette.maroon, italic = false, bold = true },
     },
-    hl = { fg = palette.text, bg = palette.base },
+    hl = { fg = palette.text, bg = palette.none },
   },
   update = { 'RecordingEnter', 'RecordingLeave' },
 } -- MacroRecording
@@ -215,32 +215,70 @@ M.FileType = {
   hl = { fg = utils.get_highlight('Type').fg, bold = true },
 }
 
-M.CodeiumStatus = {
-  init = function(self)
-    self.codeium_exist = vim.fn.exists '*codeium#GetStatusString' == 1
-    self.codeium_status = self.codeium_exist and vim.fn['codeium#GetStatusString']() or nil
-  end,
-  provider = function(self)
-    if not self.codeium_exist then
+-- M.CodeiumStatus = {
+--   init = function(self)
+--     self.codeium_exist = vim.fn.exists '*codeium#GetStatusString' == 1
+--     self.codeium_status = self.codeium_exist and vim.fn['codeium#GetStatusString']() or nil
+--   end,
+--   provider = function(self)
+--     if not self.codeium_exist then
+--       return ''
+--     end
+--     if self.codeium_status == ' ON' then
+--       return '󰚩 '
+--     elseif self.codeium_status == ' OFF' then
+--       return '󱚡 '
+--     else
+--       return '󱚝 '
+--     end
+--   end,
+--   hl = function(self)
+--     if self.codeium_status == ' ON' then
+--       return { fg = palette.green }
+--     elseif self.codeium_status == ' OFF' then
+--       return { fg = palette.gray }
+--     else
+--       return { fg = palette.maroon }
+--     end
+--   end,
+-- }
+M.CopilotStatus = {
+  provider = function()
+    if vim.fn.exists '*copilot#GetStatus' ~= 1 then
       return ''
     end
-    if self.codeium_status == ' ON' then
+
+    local status = vim.fn['copilot#GetStatus']()
+
+    if status == 'Enabled' then
       return '󰚩 '
-    elseif self.codeium_status == ' OFF' then
+    elseif status == 'Disabled' then
       return '󱚡 '
     else
-      return '󱚝 '
+      return '󱚝 ' -- Pending, Error, etc.
     end
   end,
-  hl = function(self)
-    if self.codeium_status == ' ON' then
+
+  hl = function()
+    if vim.fn.exists '*copilot#GetStatus' ~= 1 then
+      return {}
+    end
+
+    local status = vim.fn['copilot#GetStatus']()
+
+    if status == 'enabled' then
       return { fg = palette.green }
-    elseif self.codeium_status == ' OFF' then
+    elseif status == 'disabled' then
       return { fg = palette.gray }
     else
       return { fg = palette.maroon }
     end
   end,
+
+  update = {
+    'User',
+    pattern = 'Copilot.*',
+  },
 }
 
 -- Git
@@ -265,46 +303,46 @@ M.Git = {
       end
     end,
   },
-  -- {
-  --   condition = function(self)
-  --     return self.has_changes
-  --   end,
-  --   provider = '(',
-  -- },
-  -- {
-  --   provider = function(self)
-  --     local count = self.status_dict.added or 0
-  --     return count > 0 and ('+' .. count)
-  --   end,
-  --   hl = { fg = colors.git_add },
-  -- },
-  -- {
-  --   provider = function(self)
-  --     local count = self.status_dict.removed or 0
-  --     return count > 0 and ('-' .. count)
-  --   end,
-  --   hl = { fg = colors.git_del },
-  -- },
-  -- {
-  --   provider = function(self)
-  --     local count = self.status_dict.changed or 0
-  --     return count > 0 and ('~' .. count)
-  --   end,
-  --   hl = { fg = colors.git_change },
-  -- },
-  -- {
-  --   condition = function(self)
-  --     return self.has_changes
-  --   end,
-  --   provider = ')',
-  -- },
-  -- on_click = {
-  --   name = 'heirline_git',
-  --   callback = function()
-  --     ---@diagnostic disable-next-line: missing-fields
-  --     Snacks.lazygit { cwd = Snacks.git.get_root() }
-  --   end,
-  -- },
+  {
+    condition = function(self)
+      return self.has_changes
+    end,
+    provider = '(',
+  },
+  {
+    provider = function(self)
+      local count = self.status_dict.added or 0
+      return count > 0 and ('+' .. count)
+    end,
+    hl = { fg = colors.git_add },
+  },
+  {
+    provider = function(self)
+      local count = self.status_dict.removed or 0
+      return count > 0 and ('-' .. count)
+    end,
+    hl = { fg = colors.git_del },
+  },
+  {
+    provider = function(self)
+      local count = self.status_dict.changed or 0
+      return count > 0 and ('~' .. count)
+    end,
+    hl = { fg = colors.git_change },
+  },
+  {
+    condition = function(self)
+      return self.has_changes
+    end,
+    provider = ')',
+  },
+  on_click = {
+    name = 'heirline_git',
+    callback = function()
+      ---@diagnostic disable-next-line: missing-fields
+      Snacks.lazygit { cwd = Snacks.git.get_root() }
+    end,
+  },
 }
 
 -- Dianostics
@@ -351,12 +389,12 @@ M.Diagnostics = {
     end,
     hl = { fg = colors.diag_hint },
   },
-  -- on_click = {
-  --   name = 'heirline_diagnostic',
-  --   callback = function()
-  --     Snacks.picker.diagnostics_buffer()
-  --   end,
-  -- },
+  on_click = {
+    name = 'heirline_diagnostic',
+    callback = function()
+      Snacks.picker.diagnostics_buffer()
+    end,
+  },
 } -- Diagnostics
 
 M.FileIcon = {

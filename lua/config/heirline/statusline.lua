@@ -13,6 +13,7 @@ return { -- statusline
   components.Fill,
   components.RightPadding(components.ShowCmd),
   -- components.RightPadding(components.LSPActive),
+  -- components.RightPadding(components.CopilotStatus, 1),
   components.RightPadding(components.LspProgress, 1),
   components.RightPadding(components.Formatters, 1),
   -- components.RightPadding(components.SimpleIndicator),
