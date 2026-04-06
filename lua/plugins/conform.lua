@@ -37,7 +37,8 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'InsertEnter' }, {
             return { 'clang-format' }
           end
         end,
-        python = { 'yapf', 'isort' },
+        -- python = { 'yapf', 'isort' },
+        python = { 'ruff' },
         snakemake = { 'snakefmt' },
         markdown = { 'prettierd', 'cbfmt' },
         typst = { 'typstyle' },
