@@ -13,7 +13,7 @@ else
   }
   palette = colours_module.generate_palette(options, 'dark')
 end
-local components = require 'config.heirline.components'
+local components = require 'config.heirline.everforest.components'
 
 -- a nice "x" button to close the buffer
 local TablineCloseButton = {
