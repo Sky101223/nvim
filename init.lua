@@ -6,11 +6,13 @@ require 'config.autocmds'
 -- Theme
 -- require 'plugins.everforest' -- Color theme
 -- require 'plugins.nord' -- Color theme
-require 'plugins.catppuccin'
-require 'plugins.heirline' -- Statusline
+-- require 'plugins.catppuccin'
+-- require 'plugins.heirline' -- Statusline
+require 'plugins.lualine' -- Statusline
+require 'plugins.tokyonight'
 
 -- Language
-require 'plugins.treesitter' -- Treesitter
+-- require 'plugins.treesitter' -- Treesitter
 require 'plugins.completion' -- Blink
 require 'plugins.autopairs' -- Auto Pair
 require 'plugins.conform' -- Conform

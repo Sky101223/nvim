@@ -37,6 +37,13 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'InsertEnter' }, {
             return { 'clang-format' }
           end
         end,
+        c = function()
+          if vim.fn.executable 'lcg-clang-format-8.0.0' == 1 then
+            return { 'lcg_clang_format' }
+          else
+            return { 'clang-format' }
+          end
+        end,
         -- python = { 'yapf', 'isort' },
         python = { 'ruff' },
         snakemake = { 'snakefmt' },

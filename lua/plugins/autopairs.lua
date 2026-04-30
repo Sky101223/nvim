@@ -1,53 +1,45 @@
 vim.pack.add {
-  { src = 'https://github.com/altermo/ultimate-autopair.nvim' },
+  { src = 'https://github.com/windwp/nvim-autopairs' },
 }
 
 vim.api.nvim_create_autocmd('InsertEnter', {
   group = vim.api.nvim_create_augroup('SetupAutopairs', { clear = true }),
   once = true,
   callback = function()
-    require('ultimate-autopair').setup {
-      pair_cmap = false,
-      tabout = {
-        enable = true,
+    local npairs = require 'nvim-autopairs'
+    local Rule = require 'nvim-autopairs.rule'
+
+    npairs.setup {
+      enable_check_bracket_line = false,
+
+      fast_wrap = {
         map = '<C-q>',
-        cmap = '<C-q>',
-        hopout = true,
+        chars = { '{', '[', '(', '"', "'", '`' },
+        pattern = [=[[%'%"%)%>%]%)%}%,]]=],
+        end_key = '$',
+        keys = 'qwertyuiopzxcvbnmasdfghjkl',
+        check_comma = true,
+        highlight = 'Search',
+        highlight_grey = 'Comment',
       },
-      internal_pairs = {
-        { '$', '$', suround = true, fly = true, dosuround = true, newline = true, space = true, ft = { 'markdown', 'latex', 'tex' } },
-        { '\\[', '\\]', suround = true, fly = true, dosuround = true, newline = true, space = true, ft = { 'markdown', 'latex', 'tex' } },
-        { '[', ']', fly = true, dosuround = true, newline = true, space = true },
-        { '(', ')', fly = true, dosuround = true, newline = true, space = true },
-        { '{', '}', fly = true, dosuround = true, newline = true, space = true },
-        { '"', '"', suround = true, multiline = false },
-        {
-          "'",
-          "'",
-          suround = true,
-          cond = function(fn)
-            return not fn.in_lisp() or fn.in_string()
-          end,
-          alpha = true,
-          nft = { 'tex' },
-          multiline = false,
-        },
-        {
-          '`',
-          '`',
-          cond = function(fn)
-            return not fn.in_lisp() or fn.in_string()
-          end,
-          nft = { 'tex' },
-          multiline = false,
-        },
-        { '``', "''", ft = { 'tex' } },
-        { '```', '```', newline = true, ft = { 'markdown' } },
-        { '<!--', '-->', ft = { 'markdown', 'html' }, space = true },
-        { '"""', '"""', newline = true, ft = { 'python' } },
-        { "'''", "'''", newline = true, ft = { 'python' } },
-        { '/*', '*/', newline = true, ft = { 'c', 'cpp' } },
-      },
+
+      disable_filetype = { 'TelescopePrompt' },
     }
+
+    npairs.add_rule(Rule('$', '$', { 'markdown', 'latex', 'tex' }))
+    npairs.add_rule(Rule('\\[', '\\]', { 'markdown', 'latex', 'tex' }))
+    npairs.add_rule(Rule('[', ']'))
+    npairs.add_rule(Rule('(', ')'))
+    npairs.add_rule(Rule('{', '}'))
+    npairs.add_rule(Rule('"', '"'))
+    npairs.add_rule(Rule("'", "'"))
+    npairs.add_rule(Rule('`', '`'))
+    npairs.add_rule(Rule('``', "''", 'tex'))
+    npairs.add_rule(Rule('```', '```', 'markdown'))
+    npairs.add_rule(Rule('<!--', '-->', { 'markdown', 'html' }))
+    npairs.add_rule(Rule('"""', '"""', 'python'))
+    npairs.add_rule(Rule("'''", "'''", 'python'))
+    npairs.add_rule(Rule('/*', '*/', { 'c', 'cpp', 'java', 'javascript' }))
+    npairs.add_rule(Rule('//', '//', { 'c', 'cpp' }))
   end,
 })

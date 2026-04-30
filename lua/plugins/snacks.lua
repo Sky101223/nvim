@@ -21,7 +21,7 @@ require('snacks').setup {
     },
   },
   dashboard = {
-    enabled = true,
+    enabled = false,
     preset = {
       keys = {
         { icon = '󰈞 ', key = 'f', desc = 'Find files', action = ':lua Snacks.picker.smart()' },
