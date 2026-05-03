@@ -5,11 +5,12 @@ require 'config.autocmds'
 
 -- Theme
 -- require 'plugins.everforest' -- Color theme
+require 'plugins.vague'
 -- require 'plugins.nord' -- Color theme
 -- require 'plugins.catppuccin'
 -- require 'plugins.heirline' -- Statusline
 require 'plugins.lualine' -- Statusline
-require 'plugins.tokyonight'
+-- require 'plugins.tokyonight'
 
 -- Language
 -- require 'plugins.treesitter' -- Treesitter
@@ -24,7 +25,7 @@ require 'config.lsp' -- LSP
 -- Editor Layout & Search
 require 'plugins.oil' -- File explorer
 require 'plugins.comfylnum' -- Jump
-require 'plugins.snacks' -- Tools
+-- require 'plugins.snacks' -- Tools
 require 'plugins.which-key' -- Keybinding hints
 
 -- Editing Utilities

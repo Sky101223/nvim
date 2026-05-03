@@ -4,7 +4,7 @@ vim.g.have_nerd_font = true
 vim.g.markdown_folding = 1
 vim.opt.linebreak = true
 vim.g.simple_indicator_on = false
-vim.o.winborder = 'single'
+vim.o.winborder = 'rounded'
 vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
@@ -84,7 +84,6 @@ vim.opt.scrolloff = 5
 -- Big file limit
 vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
 
--- Set cmdheight = 0
 vim.opt.cmdheight = 0
 
 -- folding

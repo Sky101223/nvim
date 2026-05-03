@@ -7,3 +7,5 @@ require('tokyonight').setup {
 }
 
 vim.cmd [[colorscheme tokyonight-night]]
+vim.cmd.hi 'statusline guibg=NONE'
+vim.cmd.hi 'Comment gui=none'

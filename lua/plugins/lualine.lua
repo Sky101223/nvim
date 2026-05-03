@@ -3,23 +3,31 @@ vim.pack.add {
   'https://github.com/nvim-lualine/lualine.nvim',
 }
 
-vim.keymap.set('n', '<leader>tt', function()
-  vim.o.showtabline = vim.o.showtabline == 2 and 0 or 2
-end, { desc = 'Toggle tabline' })
-
 vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
   group = vim.api.nvim_create_augroup('SetupLualine', { clear = true }),
   once = true,
   callback = function()
     require('lualine').setup {
+      options = {
+        component_separators = { left = '', right = '' },
+      },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { {
-          'branch',
-          icon = '󰘬 ',
-        }, {
-          'diff',
-        } },
+        lualine_b = {
+          {
+            'branch',
+            icon = '󰘬',
+          },
+          {
+            'diff',
+            symbols = {
+              added = ' ',
+              modified = ' ',
+              removed = ' ',
+            },
+            colored = true,
+          },
+        },
         lualine_c = {
           { 'filename', symbols = {
             modified = ' ',

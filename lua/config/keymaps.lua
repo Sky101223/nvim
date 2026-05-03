@@ -1,4 +1,4 @@
-local custom_pickers = require 'config.pickers'
+-- local custom_pickers = require 'config.pickers'
 vim.keymap.set('i', 'jk', '<esc>', { noremap = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, desc = 'Move cursor down' })
 vim.keymap.set('x', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, desc = 'Move cursor down' })
@@ -38,7 +38,7 @@ vim.keymap.set('n', '<leader>tz', function()
   feedkeys(t('<leader>tt', true, true, true), 'm', false)
 end, { noremap = true, silent = true, desc = 'Toggle distraction free' })
 
-vim.keymap.set('n', '<leader>fg', custom_pickers.pick_repositories)
+-- vim.keymap.set('n', '<leader>fg', custom_pickers.pick_repositories)
 vim.keymap.set('n', '<C-w><C-t>', function()
   local buf = vim.api.nvim_get_current_buf()
   vim.cmd 'tabnew'
