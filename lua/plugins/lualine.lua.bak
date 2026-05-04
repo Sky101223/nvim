@@ -1,6 +1,7 @@
 vim.pack.add {
   'https://github.com/nvim-tree/nvim-web-devicons',
   'https://github.com/nvim-lualine/lualine.nvim',
+  'https://github.com/linrongbin16/lsp-progress.nvim',
 }
 
 vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
@@ -17,27 +18,40 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
           {
             'branch',
             icon = '󰘬',
+            fmt = function(str)
+              return str:sub(1, 12)
+            end,
           },
           {
             'diff',
-            symbols = {
-              added = ' ',
-              modified = ' ',
-              removed = ' ',
-            },
             colored = true,
           },
+          'diagnostics',
         },
         lualine_c = {
-          { 'filename', symbols = {
-            modified = ' ',
-            readonly = ' ',
-            unnamed = '',
-          } },
+          {
+            'filename',
+            path = 1,
+            shorting_target = 40,
+            symbols = {
+              modified = ' ',
+              readonly = '',
+              unnamed = '',
+            },
+          },
         },
-        lualine_x = { 'encoding', 'diagnostics' },
-        lualine_y = { 'fileformat' },
-        lualine_z = { 'filetype' },
+
+        lualine_x = {
+          {
+            'encoding',
+            fmt = function(str)
+              return str:upper():gsub('UTF%-8', 'UTF8')
+            end,
+          },
+          'fileformat',
+        },
+        lualine_y = { 'filetype', 'progress' },
+        lualine_z = { 'location' },
       },
     }
   end,

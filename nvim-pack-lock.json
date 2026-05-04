@@ -10,8 +10,7 @@
     },
     "blink.cmp": {
       "rev": "57d900e6982f63c7cde689aa06d8af76c8da083e",
-      "src": "https://github.com/saghen/blink.cmp",
-      "version": "1.0.0 - 2.0.0"
+      "src": "https://github.com/saghen/blink.cmp"
     },
     "bullets.vim": {
       "rev": "1c13e510e11d08b0259e8e627f128359c5521962",
@@ -32,6 +31,10 @@
     "everforest-nvim": {
       "rev": "557bce922401e247a596583679bc181d4d688554",
       "src": "https://github.com/neanias/everforest-nvim"
+    },
+    "fidget.nvim": {
+      "rev": "889e2e96edef4e144965571d46f7a77bcc4d0ddf",
+      "src": "https://github.com/j-hui/fidget.nvim"
     },
     "heirline.nvim": {
       "rev": "fae936abb5e0345b85c3a03ecf38525b0828b992",

@@ -1,8 +1,3 @@
-vim.pack.add {
-  { src = 'https://github.com/linrongbin16/lsp-progress.nvim' },
-  { src = 'https://github.com/rebelot/heirline.nvim' },
-}
-
 vim.keymap.set('n', '<leader>tt', function()
   vim.o.showtabline = vim.o.showtabline == 2 and 0 or 2
 end, { desc = 'Toggle tabline' })
@@ -14,7 +9,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
     require('lsp-progress').setup()
     require('heirline').setup {
       statusline = require 'config.heirline.statusline',
-      tabline = require 'config.heirline.tabline',
+      -- tabline = require 'config.heirline.tabline',
     }
   end,
 })

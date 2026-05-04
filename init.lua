@@ -1,23 +1,70 @@
+-- Plugins
+vim.pack.add {
+  -- Color Themes & Statusline
+  { src = 'https://github.com/catppuccin/nvim' }, -- Disable
+  { src = 'https://github.com/neanias/everforest-nvim' }, -- Disable
+  { src = 'https://github.com/vague-theme/vague.nvim' }, -- Enable
+  { src = 'https://github.com/shaunsingh/nord.nvim' }, -- Disable
+  { src = 'https://github.com/folke/tokyonight.nvim' }, -- Disable
+  { src = 'https://github.com/rebelot/heirline.nvim' }, -- Statusline
+
+  -- Blink (Enable)
+  { src = 'https://github.com/archie-judd/blink-cmp-words' },
+  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1.x' },
+
+  -- Format (Enable)
+  { src = 'https://github.com/stevearc/conform.nvim' },
+
+  -- Debugging (Enable)
+  { src = 'https://github.com/mfussenegger/nvim-dap' },
+  { src = 'https://github.com/theHamsta/nvim-dap-virtual-text' },
+  { src = 'https://github.com/nvim-neotest/nvim-nio' },
+  -- { src = 'https://github.com/nvim-dap/dap-gdb' },
+  { src = 'https://github.com/rcarriga/nvim-dap-ui' },
+  { src = 'https://github.com/mfussenegger/nvim-dap-python' },
+  { src = 'https://github.com/linrongbin16/lsp-progress.nvim' },
+
+  -- Overseer (Enable)
+  { src = 'https://github.com/stevearc/overseer.nvim' },
+
+  -- Markdown Language (Enable)
+  { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
+  { src = 'https://github.com/bullets-vim/bullets.vim' },
+
+  -- Pairs (Enable)
+  { src = 'https://github.com/windwp/nvim-autopairs' },
+
+  -- Tools
+  { src = 'https://github.com/mluders/comfy-line-numbers.nvim' }, -- Enable
+  { src = 'https://github.com/nvim-mini/mini.nvim' }, -- Enable
+  { src = 'https://github.com/folke/snacks.nvim' }, -- Disable
+  { src = 'https://github.com/stevearc/oil.nvim' }, -- Enable
+  { src = 'https://github.com/folke/which-key.nvim' }, -- Enable
+  { src = 'https://github.com/folke/todo-comments.nvim' }, -- Enable
+
+  -- LeetCode (Enable)
+  { src = 'https://github.com/kawre/leetcode.nvim' },
+  { src = 'https://github.com/MunifTanjim/nui.nvim' },
+  { src = 'https://github.com/nvim-lua/plenary.nvim' },
+}
+
 -- Basic Configuration
 require 'config.options'
 require 'config.keymaps'
 require 'config.autocmds'
 
--- Theme
--- require 'plugins.everforest' -- Color theme
+-- Themes & Statusline
+require 'plugins.everforest'
 require 'plugins.vague'
--- require 'plugins.nord' -- Color theme
--- require 'plugins.catppuccin'
--- require 'plugins.heirline' -- Statusline
-require 'plugins.lualine' -- Statusline
--- require 'plugins.tokyonight'
+-- require 'plugins.nord'
+require 'plugins.catppuccin'
+require 'plugins.heirline'
+require 'plugins.tokyonight'
 
 -- Language
--- require 'plugins.treesitter' -- Treesitter
 require 'plugins.completion' -- Blink
 require 'plugins.autopairs' -- Auto Pair
 require 'plugins.conform' -- Conform
-require 'plugins.markdown' -- Markdown Language
 require 'plugins.overseer' -- Overseer
 require 'plugins.debugging' -- Debug
 require 'config.lsp' -- LSP
@@ -26,10 +73,13 @@ require 'config.lsp' -- LSP
 require 'plugins.oil' -- File explorer
 require 'plugins.comfylnum' -- Jump
 -- require 'plugins.snacks' -- Tools
+require 'plugins.mini' -- Tools
 require 'plugins.which-key' -- Keybinding hints
 
 -- Editing Utilities
-require 'plugins.mini' -- Icons
 require 'plugins.todo-comments' -- Comments
 require 'plugins.leetcode' -- LeetCode
--- require 'plugins.copilot' -- AI
+
+vim.cmd 'colorscheme vague'
+vim.cmd.hi 'statusline guibg=NONE'
+vim.cmd.hi 'Comment gui=none'

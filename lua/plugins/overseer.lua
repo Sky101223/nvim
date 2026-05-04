@@ -1,7 +1,3 @@
-vim.pack.add {
-  { src = 'https://github.com/stevearc/overseer.nvim' },
-}
-
 local custom_utils = require 'config.utils'
 local overseer = require 'overseer'
 

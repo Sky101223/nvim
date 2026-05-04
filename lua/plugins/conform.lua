@@ -1,7 +1,3 @@
-vim.pack.add {
-  { src = 'https://github.com/stevearc/conform.nvim' },
-}
-
 vim.g.disable_autoformat = false
 vim.keymap.set('n', '<leader>tf', function()
   if vim.g.disable_autoformat then

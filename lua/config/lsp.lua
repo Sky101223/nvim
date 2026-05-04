@@ -74,7 +74,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         if not result or vim.tbl_isempty(result) then
           vim.notify('No definition found', vim.log.levels.INFO)
         else
-          require('snacks').picker.lsp_definitions()
+          vim.lsp.buf.definition()
         end
       end)
     end, { buffer = event.buf, desc = 'LSP: Goto Definition' })

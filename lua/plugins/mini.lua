@@ -1,10 +1,3 @@
-vim.pack.add {
-  -- { src = 'https://github.com/nvim-mini/mini.ai' },
-  -- { src = 'https://github.com/nvim-mini/mini.icons' },
-  -- { src = 'https://github.com/nvim-mini/mini.surround' },
-  { src = 'https://github.com/nvim-mini/mini.nvim' },
-}
-
 -- Mini
 require('mini.ai').setup {
   mappings = {
@@ -12,6 +5,7 @@ require('mini.ai').setup {
     got_right = ']',
   },
 }
+
 require('mini.icons').setup {
   style = 'glyph',
   file = {
@@ -24,6 +18,7 @@ require('mini.icons').setup {
     toml = { glyph = '󱄽', hl = 'MiniIconsOrange' },
   },
 }
+
 require('mini.surround').setup {
   mappings = {
     add = 'sa', -- Add surrounding in Normal and Visual modes
@@ -41,7 +36,7 @@ require('mini.surround').setup {
 
 require('mini.pick').setup()
 require('mini.tabline').setup()
--- require('mini.statusline').setup()
+require('mini.diff').setup()
 
 vim.o.showtabline = 0
 local function toggle_tabline()
@@ -53,6 +48,7 @@ local function toggle_tabline()
   end
 end
 
+-- Keymaps for the 'mini.nvim' plugin
 local map = function(key, func, desc)
   vim.keymap.set('n', key, func, { desc = desc })
 end

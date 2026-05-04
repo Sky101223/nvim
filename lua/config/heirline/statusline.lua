@@ -1,5 +1,5 @@
 -- local components = require 'config.heirline.everforest.components'
-local components = require 'config.heirline.catppuccin.components'
+local components = require 'config.heirline.vague.components'
 
 return { -- statusline
   components.RightPadding(components.Mode, 1),
