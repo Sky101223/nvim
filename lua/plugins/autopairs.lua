@@ -1,3 +1,4 @@
+-- Autopairs
 vim.api.nvim_create_autocmd('InsertEnter', {
   group = vim.api.nvim_create_augroup('SetupAutopairs', { clear = true }),
   once = true,
@@ -18,8 +19,6 @@ vim.api.nvim_create_autocmd('InsertEnter', {
         highlight = 'Search',
         highlight_grey = 'Comment',
       },
-
-      disable_filetype = { 'TelescopePrompt' },
     }
 
     npairs.add_rule(Rule('$', '$', { 'markdown', 'latex', 'tex' }))
@@ -36,6 +35,5 @@ vim.api.nvim_create_autocmd('InsertEnter', {
     npairs.add_rule(Rule('"""', '"""', 'python'))
     npairs.add_rule(Rule("'''", "'''", 'python'))
     npairs.add_rule(Rule('/*', '*/', { 'c', 'cpp', 'java', 'javascript' }))
-    npairs.add_rule(Rule('//', '//', { 'c', 'cpp' }))
   end,
 })

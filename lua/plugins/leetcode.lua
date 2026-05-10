@@ -1,3 +1,4 @@
+-- LeetCode
 require('leetcode').setup {
   arg = 'leet',
   lang = 'cpp',

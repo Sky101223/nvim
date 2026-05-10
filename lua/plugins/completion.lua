@@ -1,3 +1,4 @@
+-- Blink
 vim.api.nvim_create_autocmd({ 'InsertEnter', 'CmdlineEnter' }, {
   group = vim.api.nvim_create_augroup('SetupCompletion', { clear = true }),
   once = true,

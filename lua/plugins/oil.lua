@@ -7,6 +7,7 @@ function _G.get_oil_winbar()
   end
 end
 
+-- Oil
 local detail = false
 require('oil').setup {
   default_file_explorer = true,

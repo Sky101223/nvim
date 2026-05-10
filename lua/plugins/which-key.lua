@@ -1,3 +1,4 @@
+-- Which key
 vim.api.nvim_create_autocmd('VimEnter', {
   group = vim.api.nvim_create_augroup('SetupWhichkey', { clear = true }),
   once = true,

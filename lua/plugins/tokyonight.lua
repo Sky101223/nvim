@@ -1,7 +1,4 @@
-vim.pack.add {
-  { src = 'https://github.com/folke/tokyonight.nvim' },
-}
-
+-- Tokyonight
 require('tokyonight').setup {
   transparent = true,
 }

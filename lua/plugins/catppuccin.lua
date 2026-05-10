@@ -1,3 +1,4 @@
+-- Catppuccin
 require('catppuccin').setup {
   transparent_background = true,
   term_colors = true,
@@ -45,7 +46,3 @@ require('catppuccin').setup {
     end,
   },
 }
-
-vim.cmd 'colorscheme catppuccin'
-vim.cmd.hi 'statusline guibg=NONE'
-vim.cmd.hi 'Comment gui=none'

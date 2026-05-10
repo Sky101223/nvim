@@ -15,13 +15,15 @@ vim.pack.add {
   -- Format (Enable)
   { src = 'https://github.com/stevearc/conform.nvim' },
 
-  -- Debugging (Enable)
+  -- WARN: Debugging (Disable: Some errors)
   { src = 'https://github.com/mfussenegger/nvim-dap' },
   { src = 'https://github.com/theHamsta/nvim-dap-virtual-text' },
   { src = 'https://github.com/nvim-neotest/nvim-nio' },
   -- { src = 'https://github.com/nvim-dap/dap-gdb' },
   { src = 'https://github.com/rcarriga/nvim-dap-ui' },
   { src = 'https://github.com/mfussenegger/nvim-dap-python' },
+
+  -- Lsp Progress
   { src = 'https://github.com/linrongbin16/lsp-progress.nvim' },
 
   -- Overseer (Enable)
@@ -35,11 +37,10 @@ vim.pack.add {
   { src = 'https://github.com/windwp/nvim-autopairs' },
 
   -- Tools
-  { src = 'https://github.com/mluders/comfy-line-numbers.nvim' }, -- Enable
   { src = 'https://github.com/nvim-mini/mini.nvim' }, -- Enable
   { src = 'https://github.com/folke/snacks.nvim' }, -- Disable
   { src = 'https://github.com/stevearc/oil.nvim' }, -- Enable
-  { src = 'https://github.com/folke/which-key.nvim' }, -- Enable
+  { src = 'https://github.com/folke/which-key.nvim' }, -- Disable
   { src = 'https://github.com/folke/todo-comments.nvim' }, -- Enable
 
   -- LeetCode (Enable)
@@ -71,15 +72,15 @@ require 'config.lsp' -- LSP
 
 -- Editor Layout & Search
 require 'plugins.oil' -- File explorer
-require 'plugins.comfylnum' -- Jump
 -- require 'plugins.snacks' -- Tools
 require 'plugins.mini' -- Tools
-require 'plugins.which-key' -- Keybinding hints
+-- require 'plugins.which-key' -- Keybinding hints
 
 -- Editing Utilities
 require 'plugins.todo-comments' -- Comments
 require 'plugins.leetcode' -- LeetCode
 
+-- Set color
 vim.cmd 'colorscheme vague'
 vim.cmd.hi 'statusline guibg=NONE'
 vim.cmd.hi 'Comment gui=none'

@@ -9,6 +9,7 @@ vim.keymap.set('n', '<leader>tf', function()
   end
 end, { desc = 'Toggle autoformatting' })
 
+-- Conform
 vim.api.nvim_create_autocmd({ 'BufWritePre', 'InsertEnter' }, {
   group = vim.api.nvim_create_augroup('SetupConform', { clear = true }),
   once = true,
