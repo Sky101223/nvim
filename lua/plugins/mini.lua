@@ -38,6 +38,48 @@ require('mini.pick').setup()
 require('mini.tabline').setup()
 require('mini.diff').setup()
 
+require('mini.clue').setup {
+  triggers = {
+    { mode = 'n', keys = '<Leader>' },
+    { mode = 'x', keys = '<Leader>' },
+    { mode = 'n', keys = 'g' },
+    { mode = 'n', keys = 'z' },
+    { mode = 'n', keys = '[' },
+    { mode = 'n', keys = ']' },
+  },
+
+  clues = {
+    { mode = 'n', keys = 'g', desc = 'Go to' },
+    { mode = 'n', keys = '<leader>a', desc = 'Avante' },
+    { mode = 'n', keys = '<leader>b', desc = 'Buffer' },
+    { mode = 'n', keys = '<leader>d', desc = 'DAP' },
+    { mode = 'n', keys = '<leader>c', desc = 'DiffView' },
+    { mode = 'n', keys = '<leader>g', desc = 'Git' },
+    { mode = 'n', keys = '<leader>l', desc = 'Lsp' },
+    { mode = 'n', keys = '<leader>r', desc = 'Overseer tasks' },
+    { mode = 'n', keys = '<leader>f', desc = 'Find' },
+    { mode = 'n', keys = '<leader>t', desc = 'Toggle' },
+    { mode = { 'n', 'v' }, keys = '<leader>h', desc = 'Git Hunk' },
+    { mode = 'n', keys = '<leader>P', desc = 'Picture' },
+    { mode = { 'n', 'v' }, keys = '<leader>x', desc = 'Execute Lua' },
+
+    require('mini.clue').gen_clues.g(),
+    require('mini.clue').gen_clues.z(),
+    require('mini.clue').gen_clues.builtin_completion(),
+    require('mini.clue').gen_clues.marks(),
+  },
+
+  window = {
+    delay = 300,
+    config = {
+      anchor = 'SE',
+      border = 'single',
+      row = 'auto',
+      col = 'auto',
+    },
+  },
+}
+
 vim.o.showtabline = 0
 local function toggle_tabline()
   if package.loaded['mini.tabline'] then
