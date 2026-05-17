@@ -68,16 +68,6 @@ require('mini.clue').setup {
     require('mini.clue').gen_clues.builtin_completion(),
     require('mini.clue').gen_clues.marks(),
   },
-
-  window = {
-    delay = 300,
-    config = {
-      anchor = 'SE',
-      border = 'single',
-      row = 'auto',
-      col = 'auto',
-    },
-  },
 }
 
 vim.o.showtabline = 0
