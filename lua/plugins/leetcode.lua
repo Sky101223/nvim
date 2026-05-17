@@ -1,5 +1,9 @@
 -- LeetCode
 require('leetcode').setup {
+  cn = {
+    enabled = true,
+    translator = false,
+  },
   arg = 'leet',
   lang = 'cpp',
   injector = {

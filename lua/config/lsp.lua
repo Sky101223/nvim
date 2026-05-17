@@ -1,9 +1,3 @@
-vim.pack.add {
-  { src = 'https://github.com/mason-org/mason.nvim' },
-  { src = 'https://github.com/neovim/nvim-lspconfig' },
-  { src = 'https://github.com/nvimdev/lspsaga.nvim' },
-}
-
 vim.diagnostic.config {
   underline = true,
   virtual_text = {
