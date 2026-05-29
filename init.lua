@@ -11,7 +11,8 @@ require 'plugins.everforest'
 require 'plugins.vague'
 -- require 'plugins.nord'
 require 'plugins.catppuccin'
-require 'plugins.heirline'
+-- require 'plugins.heirline'
+require 'plugins.lualine'
 require 'plugins.tokyonight'
 
 -- Language
@@ -24,12 +25,13 @@ require 'config.lsp' -- LSP
 
 -- Editor Layout & Search
 require 'plugins.oil' -- File explorer
+-- require 'plugins.pdf' -- PDF
 -- require 'plugins.snacks' -- Tools
 require 'plugins.mini' -- Tools
 -- require 'plugins.which-key' -- Keybinding hints
 
 -- Editing Utilities
-require 'plugins.todo-comments' -- Comments
+require 'plugins.comments' -- Comments
 require 'plugins.leetcode' -- LeetCode
 
 -- require('vim._core.ui2').enable {

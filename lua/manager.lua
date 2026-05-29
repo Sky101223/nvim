@@ -11,7 +11,8 @@ M.plugins = {
     { src = 'https://github.com/folke/tokyonight.nvim' }, -- Disable
 
     -- Statusline
-    { src = 'https://github.com/rebelot/heirline.nvim' }, -- Enable
+    { src = 'https://github.com/rebelot/heirline.nvim' }, -- Disable
+    { src = 'https://github.com/nvim-lualine/lualine.nvim' }, -- Enable
   },
 
   lsp = {
@@ -56,6 +57,8 @@ M.plugins = {
     { src = 'https://github.com/stevearc/oil.nvim' }, -- Enable
     { src = 'https://github.com/folke/which-key.nvim' }, -- Disable
     { src = 'https://github.com/folke/todo-comments.nvim' }, -- Enable
+    -- { src = 'https://github.com/paddywz/doxycpp.nvim' }, -- Enable
+    { src = 'https://github.com/r-pletnev/pdfreader.nvim' },
 
     -- LeetCode (Enable)
     { src = 'https://github.com/kawre/leetcode.nvim' },
