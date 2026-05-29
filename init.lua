@@ -8,6 +8,7 @@ require 'config.autocmds'
 
 -- Themes & Statusline
 require 'plugins.everforest'
+require 'plugins.kanagawa'
 require 'plugins.vague'
 -- require 'plugins.nord'
 require 'plugins.catppuccin'
@@ -39,6 +40,6 @@ require 'plugins.leetcode' -- LeetCode
 -- }
 
 -- Set color
-vim.cmd 'colorscheme catppuccin-mocha'
+vim.cmd 'colorscheme kanagawa'
 vim.cmd.hi 'statusline guibg=NONE'
 vim.cmd.hi 'Comment gui=none'
