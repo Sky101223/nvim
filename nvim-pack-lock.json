@@ -41,6 +41,10 @@
       "rev": "fae936abb5e0345b85c3a03ecf38525b0828b992",
       "src": "https://github.com/rebelot/heirline.nvim"
     },
+    "kanagawa.nvim": {
+      "rev": "bb85e4bfc8d89b0e62c8fa53ccdd13d12e2f77b3",
+      "src": "https://github.com/rebelot/kanagawa.nvim"
+    },
     "leetcode.nvim": {
       "rev": "fdd3f91800b3983e27bc9fcfb99cfa7293d7f11a",
       "src": "https://github.com/kawre/leetcode.nvim"

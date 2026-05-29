@@ -17,7 +17,7 @@ require 'plugins.tokyonight'
 
 -- Language
 require 'plugins.completion' -- Blink
-require 'plugins.autopairs' -- Auto Pair
+-- require 'plugins.autopairs' -- Auto Pair
 require 'plugins.conform' -- Conform
 require 'plugins.overseer' -- Overseer
 require 'plugins.debugging' -- Debug
@@ -31,7 +31,7 @@ require 'plugins.mini' -- Tools
 -- require 'plugins.which-key' -- Keybinding hints
 
 -- Editing Utilities
-require 'plugins.comments' -- Comments
+-- require 'plugins.comments' -- Comments
 require 'plugins.leetcode' -- LeetCode
 
 -- require('vim._core.ui2').enable {
@@ -39,6 +39,6 @@ require 'plugins.leetcode' -- LeetCode
 -- }
 
 -- Set color
-vim.cmd 'colorscheme vague'
+vim.cmd 'colorscheme catppuccin-mocha'
 vim.cmd.hi 'statusline guibg=NONE'
 vim.cmd.hi 'Comment gui=none'

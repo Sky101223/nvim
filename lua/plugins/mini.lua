@@ -34,9 +34,49 @@ require('mini.surround').setup {
   },
 }
 
+require('mini.cursorword').setup()
 require('mini.pick').setup()
 require('mini.tabline').setup()
 require('mini.diff').setup()
+require('mini.indentscope').setup()
+require('mini.hipatterns').setup {
+  highlighters = {
+    todo = {
+      pattern = '%f[%w]()TODO()%f[%W]',
+      group = 'MiniHipatternsTodo',
+    },
+    fixme = {
+      pattern = '%f[%w]()FIXME()%f[%W]',
+      group = 'MiniHipatternsFixme',
+    },
+    hack = {
+      pattern = '%f[%w]()HACK()%f[%W]',
+      group = 'MiniHipatternsHack',
+    },
+    note = {
+      pattern = '%f[%w]()NOTE()%f[%W]',
+      group = 'MiniHipatternsNote',
+    },
+
+    hex_color = require('mini.hipatterns').gen_highlighter.hex_color {
+      style = 'background',
+    },
+  },
+
+  delay = {
+    text_change = 200,
+    scroll = 50,
+  },
+}
+require('mini.notify').setup {
+  window = {
+    winblend = 0,
+    border = 'rounded',
+    zindex = 50,
+  },
+}
+require('mini.pairs').setup()
+require('mini.comment').setup()
 
 require('mini.clue').setup {
   triggers = {
@@ -90,4 +130,5 @@ map('<leader>ff', ':Pick files<CR>', 'Smart find file')
 map('<leader>fh', ':Pick help<CR>', 'Find in help')
 map('<leader>fw', ':Pick grep<CR>', 'Find content')
 map('<leader>fW', ':Pick grep_live<CR>', 'Find content(live)')
+map('<leader>fc', ':e $MYVIMRC<CR>', 'Setting')
 map('<leader><leader>', ':Pick buffers<CR>', 'Find buffers')

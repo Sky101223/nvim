@@ -4,11 +4,12 @@ local list = {}
 M.plugins = {
   -- Color Themes & Statusline
   colors = {
-    { src = 'https://github.com/catppuccin/nvim' }, -- Disable
-    { src = 'https://github.com/neanias/everforest-nvim' }, -- Disable
-    { src = 'https://github.com/vague-theme/vague.nvim' }, -- Enable
-    { src = 'https://github.com/shaunsingh/nord.nvim' }, -- Disable
-    { src = 'https://github.com/folke/tokyonight.nvim' }, -- Disable
+    { src = 'https://github.com/catppuccin/nvim' },
+    { src = 'https://github.com/neanias/everforest-nvim' },
+    { src = 'https://github.com/vague-theme/vague.nvim' },
+    { src = 'https://github.com/shaunsingh/nord.nvim' },
+    { src = 'https://github.com/folke/tokyonight.nvim' },
+    { src = 'https://github.com/rebelot/kanagawa.nvim' },
 
     -- Statusline
     { src = 'https://github.com/rebelot/heirline.nvim' }, -- Disable
@@ -23,7 +24,7 @@ M.plugins = {
     -- Format (Enable)
     { src = 'https://github.com/stevearc/conform.nvim' },
 
-    -- WARN: Debugging (Disable: Some errors)
+    -- FIXME Debugging (Disable: Some errors)
     { src = 'https://github.com/mfussenegger/nvim-dap' },
     { src = 'https://github.com/theHamsta/nvim-dap-virtual-text' },
     { src = 'https://github.com/nvim-neotest/nvim-nio' },
