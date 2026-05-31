@@ -27,19 +27,21 @@ require 'config.lsp' -- LSP
 -- Editor Layout & Search
 require 'plugins.oil' -- File explorer
 -- require 'plugins.pdf' -- PDF
--- require 'plugins.snacks' -- Tools
+require 'plugins.snacks' -- Tools
 require 'plugins.mini' -- Tools
--- require 'plugins.which-key' -- Keybinding hints
+require 'plugins.which-key' -- Keybinding hints
 
 -- Editing Utilities
 -- require 'plugins.comments' -- Comments
 require 'plugins.leetcode' -- LeetCode
+
+require 'plugins.gitsigns' -- Git
 
 -- require('vim._core.ui2').enable {
 --   enable = true,
 -- }
 
 -- Set color
-vim.cmd 'colorscheme kanagawa'
+vim.cmd 'colorscheme catppuccin'
 vim.cmd.hi 'statusline guibg=NONE'
 vim.cmd.hi 'Comment gui=none'

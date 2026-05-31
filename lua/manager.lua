@@ -59,7 +59,8 @@ M.plugins = {
     { src = 'https://github.com/folke/which-key.nvim' }, -- Disable
     { src = 'https://github.com/folke/todo-comments.nvim' }, -- Enable
     -- { src = 'https://github.com/paddywz/doxycpp.nvim' }, -- Enable
-    { src = 'https://github.com/r-pletnev/pdfreader.nvim' },
+    -- { src = 'https://github.com/r-pletnev/pdfreader.nvim' },
+    { src = 'https://github.com/lewis6991/gitsigns.nvim' },
 
     -- LeetCode (Enable)
     { src = 'https://github.com/kawre/leetcode.nvim' },

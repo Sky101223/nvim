@@ -29,6 +29,9 @@ vim.keymap.set('v', '<leader>p', 'p', { noremap = true })
 vim.keymap.set('n', '<space>X', '<cmd>source %<cr>', { desc = 'Run this lua file' })
 vim.keymap.set('n', '<space>x', ':.lua<cr>', { desc = 'Run this line' })
 vim.keymap.set('v', '<space>x', ':lua<cr>', { desc = 'Run selection' })
+vim.keymap.set('n', '<leader>tt', function()
+  vim.o.showtabline = vim.o.showtabline == 2 and 0 or 2
+end, { desc = 'Toggle tabline' })
 
 local feedkeys = vim.api.nvim_feedkeys
 local t = vim.api.nvim_replace_termcodes

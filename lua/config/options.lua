@@ -87,5 +87,7 @@ vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
 -- Disappeared cmd
 vim.opt.cmdheight = 0
 
+vim.o.showtabline = 0
+
 -- folding
 require 'config.folding'

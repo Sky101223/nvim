@@ -39,7 +39,6 @@ vim.api.nvim_create_autocmd('VimEnter', {
     -- Document existing key chains
     require('which-key').add {
       { 'g', group = 'Go to', icon = '󰿅' },
-      { '<leader>a', group = 'Avante', icon = '󰚩' },
       { '<leader>b', group = 'Buffer', icon = '' },
       { '<leader>d', group = 'DAP', icon = '' },
       { '<leader>c', group = 'DiffView', icon = '' },
