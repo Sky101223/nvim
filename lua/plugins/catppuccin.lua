@@ -2,9 +2,8 @@
 require('catppuccin').setup {
   flavour = 'mocha',
   styles = {
-    comments = { 'italic' },
-    keywords = { 'bold' },
-    functions = { 'bold', 'italic' },
+    keywords = { 'italic' },
+    functions = { 'bold' },
   },
   transparent_background = true,
   term_colors = true,
