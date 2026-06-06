@@ -120,7 +120,7 @@ require('mini.pairs').setup()
 --   end
 -- end
 --
--- -- Keymaps for the 'mini.nvim' plugin
+-- Keymaps for the 'mini.nvim' plugin
 -- local map = function(key, func, desc)
 --   vim.keymap.set('n', key, func, { desc = desc })
 -- end
