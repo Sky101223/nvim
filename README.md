@@ -6,6 +6,10 @@
 
 - Version: 12.2
 - Plugin Manager: [Simpler manager](./lua/manager.lua)
-- Languager Support: [LSP](./lua/config/lsp.lua), DAP, and formatting via Mason
+- Languager Support: [LSP](./lua/config/lsp.lua), and formatting via Mason
 
-**You need [Nord Font](https://www.nerdfonts.com/)**
+**You need to fit [Nord Font](https://www.nerdfonts.com/)**
+
+## Unfinished parts
+
+1. Debugging (DAP)
