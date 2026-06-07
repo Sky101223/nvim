@@ -77,6 +77,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
       end)
     end, { buffer = event.buf, desc = 'LSP: Goto Definition' })
+    vim.keymap.set('i', '<C-y>', function()
+      if vim.fn.pumvisible() == 1 then
+        return '<C-y>'
+      else
+        return '<C-y>'
+      end
+    end, { expr = true, desc = 'Confirm LSP completion' })
     vim.keymap.set('n', 'gD', function()
       local win = vim.api.nvim_get_current_win()
       local width = vim.api.nvim_win_get_width(win)
