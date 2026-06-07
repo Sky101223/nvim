@@ -10,6 +10,7 @@ M.plugins = {
     { src = 'https://github.com/shaunsingh/nord.nvim' },
     { src = 'https://github.com/folke/tokyonight.nvim' },
     { src = 'https://github.com/rebelot/kanagawa.nvim' },
+    { src = 'https://github.com/EdenEast/nightfox.nvim' },
 
     -- Statusline
     { src = 'https://github.com/rebelot/heirline.nvim' }, -- Disable

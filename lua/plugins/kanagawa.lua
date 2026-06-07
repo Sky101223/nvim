@@ -8,9 +8,8 @@ require('kanagawa').setup {
   transparent = true,
   dimInactive = false,
   terminalColors = true,
-  theme = 'dragon',
   background = {
-    dark = 'dragon',
+    dark = 'wave',
     light = 'lotus',
   },
 }

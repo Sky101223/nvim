@@ -47,6 +47,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
     local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
 
+    -- [completion]
+    if client:supports_method 'textDocument/completion' then
+      vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+    end
+
     -- [inlay hint]
     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
       vim.keymap.set('n', '<leader>th', function()
@@ -159,5 +164,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', ']f', jump_to_current_function_end, { desc = 'Jump to end of current function' })
   end,
 })
-
--- vim.cmd([[set completeopt+=menuone,noselect,popup]])
+vim.cmd [[set completeopt+=menuone,noselect,popup]]
