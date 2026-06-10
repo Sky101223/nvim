@@ -10,3 +10,17 @@ else
 end
 
 vim.lsp.enable 'clangd'
+
+local map = vim.keymap.set
+local opts = { buffer = true, silent = true }
+map('n', '<localleader>r', function()
+  local file = vim.fn.expand '%:p'
+  local out = vim.fn.expand '%:p:r' .. '.exe'
+
+  local cmd = string.format('g++ -std=c++23 "%s" -o "%s" && cmd /c "%s & pause"', file, out, out)
+
+  vim.cmd('!' .. cmd)
+end, opts)
+map('n', '<localleader>b', function()
+  vim.cmd '!g++ -std=c++23 % -o %:r'
+end, opts)
