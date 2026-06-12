@@ -1,68 +1,4 @@
--- local palette = require('vague').get_palette
--- local utils = require 'heirline.utils'
--- local conditions = require 'heirline.conditions'
--- local icons = require 'config.icons'
--- local colors = {
---   diag_warn = utils.get_highlight('DiagnosticWarn').fg,
---   diag_error = utils.get_highlight('DiagnosticError').fg,
---   diag_hint = utils.get_highlight('DiagnosticHint').fg,
---   diag_info = utils.get_highlight('DiagnosticInfo').fg,
---   git_del = utils.get_highlight('diffDeleted').fg,
---   git_add = utils.get_highlight('diffAdded').fg,
---   git_change = utils.get_highlight('diffChanged').fg,
--- }
---
--- local vague_config = require 'vague'
--- local colors = vague_config.current.colors
-local colors = {
-  ---@type string
-  bg = '#141415',
-  ---@type string
-  inactiveBg = '#1c1c24',
-  ---@type string
-  fg = '#cdcdcd',
-  ---@type string
-  floatBorder = '#878787',
-  ---@type string
-  line = '#252530',
-  ---@type string
-  comment = '#606079',
-  ---@type string
-  builtin = '#b4d4cf',
-  ---@type string
-  func = '#c48282',
-  ---@type string
-  string = '#e8b589',
-  ---@type string
-  number = '#e0a363',
-  ---@type string
-  property = '#c3c3d5',
-  ---@type string
-  constant = '#aeaed1',
-  ---@type string
-  parameter = '#bb9dbd',
-  ---@type string
-  visual = '#333738',
-  ---@type string
-  error = '#d8647e',
-  ---@type string
-  warning = '#f3be7c',
-  ---@type string
-  hint = '#7e98e8',
-  ---@type string
-  operator = '#90a0b5',
-  ---@type string
-  keyword = '#6e94b2',
-  ---@type string
-  type = '#9bb4bc',
-  ---@type string
-  search = '#405065',
-  ---@type string
-  plus = '#7fa563',
-  ---@type string
-  delta = '#f3be7c',
-}
-
+local colors = require('vague').get_palette()
 local utils = require 'heirline.utils'
 local conditions = require 'heirline.conditions'
 local icons = require 'config.icons'
@@ -162,7 +98,7 @@ M.Mode = {
       Rv = 'Rv',
       Rvc = 'Rv',
       Rvx = 'Rv',
-      c = '',
+      c = 'COMMAND',
       cv = 'Ex',
       r = '...',
       rm = 'M',

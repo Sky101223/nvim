@@ -43,6 +43,7 @@ plugins.sites = {
   { src = 'https://github.com/mason-org/mason.nvim' },
   { src = 'https://github.com/neovim/nvim-lspconfig' },
   { src = 'https://github.com/nvimdev/lspsaga.nvim' },
+  { src = 'https://github.com/stevearc/aerial.nvim' },
 
   -- Overseer (Enable)
   { src = 'https://github.com/stevearc/overseer.nvim' },
@@ -65,11 +66,14 @@ plugins.sites = {
 
 plugins.config_files = {
   'vague',
-  'lualine',
+  -- 'lualine',
+  'heirline',
   'conform',
   'overseer',
   'oil',
+  'aerial',
   'mini',
+  'improve_lsp',
   'leetcode',
   'gitsigns',
 }

@@ -36,7 +36,7 @@ require('mini.surround').setup {
 
 require('mini.pick').setup()
 -- require('mini.git').setup()
-require('mini.tabline').setup()
+-- require('mini.tabline').setup()
 require('mini.indentscope').setup()
 require('mini.notify').setup {
   window = {
@@ -44,26 +44,29 @@ require('mini.notify').setup {
     border = 'rounded',
     zindex = 50,
   },
+  lsp_progress = {
+    enable = false,
+  },
 }
 require('mini.pairs').setup()
 require('mini.comment').setup()
 
-vim.o.showtabline = 0
-local function toggle_tabline()
-  if package.loaded['mini.tabline'] then
-    vim.o.showtabline = vim.o.showtabline == 2 and 0 or 2
-  else
-    require('mini.tabline').setup()
-    vim.o.showtabline = 2
-  end
-end
+-- vim.o.showtabline = 0
+-- local function toggle_tabline()
+--   if package.loaded['mini.tabline'] then
+--     vim.o.showtabline = vim.o.showtabline == 2 and 0 or 2
+--   else
+--     require('mini.tabline').setup()
+--     vim.o.showtabline = 2
+--   end
+-- end
 
 -- Keymaps for the 'mini.nvim' plugin
 local map = function(key, func, desc)
   vim.keymap.set('n', key, func, { desc = desc })
 end
 
-map('<leader>tt', toggle_tabline, 'Toggle tabline')
+-- map('<leader>tt', toggle_tabline, 'Toggle tabline')
 map('<leader>ff', ':Pick files<CR>', 'Smart find file')
 map('<leader>fh', ':Pick help<CR>', 'Find in help')
 map('<leader>fw', ':Pick grep<CR>', 'Find content')

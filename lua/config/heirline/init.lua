@@ -1,7 +1,7 @@
--- local components = require 'config.heirline.everforest.components'
-local components = require 'config.heirline.vague.components'
+local M = {}
 
-return { -- statusline
+local components = require 'config.heirline.vague.components'
+M.statusline = {
   components.RightPadding(components.Mode, 1),
   components.RightPadding(components.FileNameBlock, 1),
   components.RightPadding(components.Git, 1),
@@ -21,3 +21,7 @@ return { -- statusline
   components.Ruler,
   -- components.ScrollBar,
 }
+
+M.tabline = require 'config.heirline.vague.tabline'
+
+return M

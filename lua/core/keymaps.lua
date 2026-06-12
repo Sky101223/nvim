@@ -8,13 +8,11 @@ vim.keymap.set('n', '|', '<CMD>:vsp<CR>', { desc = 'Split window vertically' })
 vim.keymap.set('n', ']q', '<cmd>cnext<cr>', { desc = 'Go to next qf item' })
 vim.keymap.set('n', '[q', '<cmd>cprev<cr>', { desc = 'Go to prev qf item' })
 vim.keymap.set('n', '[d', function()
-  vim.diagnostic.goto_prev()
-  vim.diagnostic.open_float()
-end, { desc = 'Go to previous diagnostic and show float' })
+  vim.diagnostic.jump { count = -1, float = true }
+end, { desc = 'Go to previous diagnostic' })
 vim.keymap.set('n', ']d', function()
-  vim.diagnostic.goto_next()
-  vim.diagnostic.open_float()
-end, { desc = 'Go to next diagnostic and show float' })
+  vim.diagnostic.jump { count = 1, float = true }
+end, { desc = 'Go to next diagnostic' })
 vim.keymap.set('n', '<C-d>', '5j', { desc = 'Scroll down by 5 lines' })
 vim.keymap.set('n', '<C-u>', '5k', { desc = 'Scroll up by 5 lines' })
 vim.keymap.set('n', 'L', 'gt', { noremap = true, desc = 'Go to next tab' })
@@ -32,6 +30,8 @@ vim.keymap.set('v', '<space>x', ':lua<cr>', { desc = 'Run selection' })
 vim.keymap.set('n', '<leader>tt', function()
   vim.o.showtabline = vim.o.showtabline == 2 and 0 or 2
 end, { desc = 'Toggle tabline' })
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
+vim.keymap.set('v', '<leader>ca', vim.lsp.buf.code_action)
 
 local feedkeys = vim.api.nvim_feedkeys
 local t = vim.api.nvim_replace_termcodes
@@ -42,7 +42,6 @@ vim.keymap.set('n', '<leader>tz', function()
   feedkeys(t('<leader>tt', true, true, true), 'm', false)
 end, { noremap = true, silent = true, desc = 'Toggle distraction free' })
 
--- vim.keymap.set('n', '<leader>fg', custom_pickers.pick_repositories)
 vim.keymap.set('n', '<C-w><C-t>', function()
   local buf = vim.api.nvim_get_current_buf()
   vim.cmd 'tabnew'
@@ -93,64 +92,6 @@ end
 
 vim.keymap.set('n', '<leader>fJ', jump_to_file_lnum_from_all_windows, { desc = 'Jump to file:line from any window' })
 
-local function send_to_terminal(term_name, init_cmd)
-  local mode = vim.fn.mode()
-  local text
-
-  if mode == 'v' or mode == 'V' or mode == '\22' then
-    -- Yank visual selection without clobbering registers
-    vim.cmd 'normal! "vy'
-    text = vim.fn.getreg 'v' -- we used the v register
-  else
-    -- Get entire buffer
-    text = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n')
-  end
-
-  -- update DISPLAY
-  local handle = io.popen [[bash -c '[ -n "$TMUX" ] && export DISPLAY=$(tmux show-env | sed -n "s/^DISPLAY=//p"); echo -n $DISPLAY']]
-  local display_value
-  if handle then
-    display_value = handle:read '*a'
-    handle:close()
-  end
-
-  local target_buf = nil
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buftype == 'terminal' and vim.api.nvim_buf_get_name(buf):match(term_name .. '$') then
-      target_buf = buf
-      break
-    end
-  end
-
-  -- If no ROOT terminal, create one
-  if not target_buf then
-    if init_cmd then
-      vim.cmd("vsplit | term bash -i -l -c '[ -n \"$TMUX\" ] && export DISPLAY=$(tmux show-env | sed -n 's/^DISPLAY=//p'); " .. init_cmd .. "'")
-    else
-      vim.cmd "vsplit | term bash -i -l -c '[ -n \"$TMUX\" ] && export DISPLAY=$(tmux show-env | sed -n 's/^DISPLAY=//p');'"
-    end
-    target_buf = vim.api.nvim_get_current_buf()
-    vim.api.nvim_buf_set_name(target_buf, term_name)
-    -- vim.b.term_name = 'ROOT'
-  end
-
-  -- Send to ROOT terminal
-  local chan_id = vim.b[target_buf].terminal_job_id
-  if term_name == 'term:ROOT' then
-    vim.fn.chansend(chan_id, 'gSystem->Setenv("DISPLAY", "' .. display_value .. '");' .. '\n')
-  end
-  vim.fn.chansend(chan_id, text)
-end
-
-vim.keymap.set('n', '<leader>sR', function()
-  send_to_terminal('term:ROOT', 'r')
-end, { desc = 'Send to term:ROOT' })
-vim.keymap.set('v', '<leader>sr', function()
-  send_to_terminal('term:ROOT', 'r')
-end, { desc = 'Send to term:ROOT' })
-vim.keymap.set('v', '<leader>sp', function()
-  send_to_terminal('term:python', 'python3')
-end, { desc = 'Send to term:python' })
 vim.keymap.set('n', '<leader>tp', function()
   local terminals = {
     { name = 'ROOT', cmd = 'pwsh -NoLogo' },

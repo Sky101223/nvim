@@ -27,21 +27,6 @@ vim.diagnostic.config {
   },
 }
 
-require('mason').setup()
-
-require('lspsaga').setup {
-  symbol_in_winbar = {
-    separator = ' ',
-  },
-  ui = {
-    code_action = '',
-  },
-  lightbulb = {
-    enable = false,
-    virtual_text = false,
-  },
-}
-
 vim.opt.pumheight = 12
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('SetupLSP', {}),
@@ -175,17 +160,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
 
 -- Load snippes
-local function load_snippets(file)
-  local path = vim.fn.stdpath 'config' .. '/lua/config/snippets/' .. file
+local function load_snippets(file, filetype)
+  local path = vim.fn.stdpath 'config' .. '/lua/core/snippets/' .. file
   local ok, mod = pcall(dofile, path)
 
   if not ok then
-    vim.notify(' 󰅚  Failed to load snippet: ' .. file, vim.log.levels.ERROR)
+    vim.notify('   Failed to load snippet: ' .. file, vim.log.levels.ERROR)
     return
   end
 
   if not mod or not mod.snippets then
-    vim.notify(' 󰀪  No snippets table found in: ' .. file, vim.log.levels.WARN)
+    vim.notify('   No snippets table found in: ' .. file, vim.log.levels.WARN)
     return
   end
 
@@ -200,12 +185,12 @@ local function load_snippets(file)
     end)
   end
 
-  vim.notify(string.format(' 󰄬  Loaded %d C++ snippets (%s)', count, file), vim.log.levels.INFO)
+  vim.notify(string.format(' 󰄬  Loaded %d %s snippets (%s)', count, filetype, file), vim.log.levels.INFO)
 end
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'cpp',
   callback = function()
-    load_snippets 'cpp.lua'
+    load_snippets('cpp.lua', 'c++')
   end,
 })
