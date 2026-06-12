@@ -67,7 +67,7 @@ plugins.sites = {
 plugins.config_files = {
   'vague',
   -- 'lualine',
-  'heirline',
+  -- 'heirline',
   'conform',
   'overseer',
   'oil',
