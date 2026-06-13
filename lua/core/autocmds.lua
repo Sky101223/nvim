@@ -1,7 +1,5 @@
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
-local custom_utils = require 'config.utils'
-
 local function augroup(name)
   return vim.api.nvim_create_augroup('lazyvim_' .. name, { clear = true })
 end
@@ -90,12 +88,12 @@ vim.api.nvim_create_autocmd('VimResized', {
     vim.cmd 'wincmd =' -- Equalize window sizes
 
     -- DAP UI
-    custom_utils.func_on_window('dapui_stacks', function()
+    Sky.func_on_window('dapui_stacks', function()
       require('dapui').open { reset = true }
     end)
 
     -- OverseerList
-    custom_utils.reset_overseerlist_width()
+    Sky.reset_overseerlist_width()
   end,
 })
 -- Global mapping for normal windows

@@ -87,7 +87,7 @@ vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
 vim.o.showtabline = 0
 
 -- folding
-require 'config.folding'
+require 'core.folding'
 
 -- Cmdline
 require('vim._core.ui2').enable {

@@ -1,3 +1,30 @@
+-- Mason
+require('mason').setup()
+
+-- Lspsaga
+require('lspsaga').setup {
+  symbol_in_winbar = {
+    separator = ' ',
+  },
+  ui = {
+    code_action = '',
+  },
+  lightbulb = {
+    enable = false,
+    virtual_text = false,
+  },
+}
+
+-- Outline
+require('aerial').setup {
+  on_attach = function(bufnr)
+    vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
+    vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
+  end,
+}
+vim.keymap.set('n', '<leader>o', ':AerialToggle!<CR>', { desc = 'Outline' })
+
+-- Conform
 vim.g.disable_autoformat = false
 vim.keymap.set('n', '<leader>tf', function()
   if vim.g.disable_autoformat then
