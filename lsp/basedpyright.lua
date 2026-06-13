@@ -1,7 +1,14 @@
 return {
+  detached = false,
+  capabilities = vim.lsp.protocol.make_client_capabilities(),
   settings = {
     basedpyright = {
-      analysis = { typeCheckingMode = 'off' },
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = 'openFilesOnly',
+        typeCheckingMode = 'standard',
+      },
     },
   },
   root_makers = {
