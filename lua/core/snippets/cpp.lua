@@ -63,7 +63,7 @@ private:
 
     clambda = [[[${1: }](${2:init-statement}) {
   ${3:statement}
-}]],
+};]],
 
     cpragma = [[#pragma ${1:pragma-params}]],
 
