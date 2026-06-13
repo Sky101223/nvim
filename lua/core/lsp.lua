@@ -1,4 +1,5 @@
 Sky = Sky or {}
+require 'core.snippets'
 
 vim.diagnostic.config {
   underline = true,
@@ -181,7 +182,6 @@ end
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'cpp',
   callback = function()
-    require 'core.snippets.cpp'
     Sky.load_snippets(Sky.snippets.cpp)
   end,
 })
