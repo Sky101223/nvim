@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'InsertEnter' }, {
         taplo = { command = 'taplo', args = { 'fmt', '--option', 'indent_tables=false', '-' } },
         ruff_fix = {
           command = 'ruff',
-          args = { 'check', '--select', 'I', '--fix', '--stdin-filename', '$FILENAME', '-' },
+          args = { 'format', '--stdin-filename', '$FILENAME', '-' },
           stdin = true,
         },
         lcg_clang_format = { command = 'lcg-clang-format-8.0.0', args = { '$FILENAME' } },

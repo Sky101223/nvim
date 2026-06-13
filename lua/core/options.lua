@@ -1,5 +1,5 @@
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ','
+vim.g.maplocalleader = ';'
 vim.g.have_nerd_font = true
 vim.g.markdown_folding = 1
 vim.opt.linebreak = true
@@ -84,10 +84,12 @@ vim.opt.scrolloff = 5
 -- Big file limit
 vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
 
--- -- Disappeared cmd
--- vim.opt.cmdheight = 0
-
 vim.o.showtabline = 0
 
 -- folding
 require 'config.folding'
+
+-- Cmdline
+require('vim._core.ui2').enable {
+  enable = true,
+}
