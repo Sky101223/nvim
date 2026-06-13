@@ -1,3 +1,5 @@
+Sky = Sky or {}
+
 vim.diagnostic.config {
   underline = true,
   virtual_text = {
@@ -159,38 +161,27 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
 
--- Load snippes
-local function load_snippets(file, filetype)
-  local path = vim.fn.stdpath 'config' .. '/lua/core/snippets/' .. file
-  local ok, mod = pcall(dofile, path)
-
-  if not ok then
-    vim.notify('   Failed to load snippet: ' .. file, vim.log.levels.ERROR)
-    return
-  end
-
-  if not mod or not mod.snippets then
-    vim.notify('   No snippets table found in: ' .. file, vim.log.levels.WARN)
+-- Load snippets
+Sky.load_snippets = function(snippets)
+  if type(snippets) ~= 'table' then
     return
   end
 
   local count = 0
-  for _ in pairs(mod.snippets) do
+  for trigger, body in pairs(snippets) do
     count = count + 1
-  end
-
-  for trigger, body in pairs(mod.snippets) do
     vim.keymap.set('ia', trigger, function()
       vim.snippet.expand(body)
     end)
   end
 
-  vim.notify(string.format(' 󰄬  Loaded %d %s snippets (%s)', count, filetype, file), vim.log.levels.INFO)
+  vim.notify(string.format(' 󰄬  Loaded %d snippets', count), vim.log.levels.INFO)
 end
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'cpp',
   callback = function()
-    load_snippets('cpp.lua', 'c++')
+    require 'core.snippets.cpp'
+    Sky.load_snippets(Sky.snippets.cpp)
   end,
 })
