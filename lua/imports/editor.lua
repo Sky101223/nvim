@@ -12,13 +12,20 @@ require('mini.ai').setup {
 require('mini.icons').setup {
   style = 'glyph',
   file = {
-    README = { glyph = '󰆈', hl = 'MiniIconsYellow' },
-    ['README.md'] = { glyph = '󰆈', hl = 'MiniIconsYellow' },
+    README = { glyph = '󰆈 ', hl = 'MiniIconsYellow' },
+    ['README.md'] = { glyph = '󰆈 ', hl = 'MiniIconsYellow' },
   },
   filetype = {
-    bash = { glyph = '󱆃', hl = 'MiniIconsGreen' },
-    sh = { glyph = '󱆃', hl = 'MiniIconsGrey' },
-    toml = { glyph = '󱄽', hl = 'MiniIconsOrange' },
+    bash = { glyph = '󱆃 ', hl = 'MiniIconsGreen' },
+    sh = { glyph = '󱆃 ', hl = 'MiniIconsGrey' },
+    toml = { glyph = '󱄽 ', hl = 'MiniIconsOrange' },
+    cpp = { glyph = '󰙲 ', hl = 'MiniIconsCyan' },
+  },
+
+  extension = {
+    h = { glyph = ' ', hl = 'MiniIconsPurple' },
+    hpp = { glyph = ' ', hl = 'MiniIconsMagenta' },
+    hxx = { glyph = ' ', hl = 'MiniIconsMagenta' },
   },
 }
 
@@ -38,9 +45,10 @@ require('mini.surround').setup {
 }
 
 require('mini.pick').setup()
+require('mini.extra').setup()
 -- require('mini.git').setup()
-require('mini.tabline').setup()
-require('mini.indentscope').setup()
+-- require('mini.tabline').setup()
+-- require('mini.indentscope').setup()
 require('mini.notify').setup {
   window = {
     winblend = 0,
@@ -54,36 +62,57 @@ require('mini.notify').setup {
 require('mini.pairs').setup()
 require('mini.comment').setup()
 
-vim.o.showtabline = 0
-local function toggle_tabline()
-  if package.loaded['mini.tabline'] then
-    vim.o.showtabline = vim.o.showtabline == 2 and 0 or 2
-  else
-    require('mini.tabline').setup()
-    vim.o.showtabline = 2
-  end
-end
-
 -- Keymaps for the 'mini.nvim' plugin
 local map = function(key, func, desc)
   vim.keymap.set('n', key, func, { desc = desc })
 end
 
-map('<leader>tt', toggle_tabline, 'Toggle tabline')
-map('<leader>ff', ':Pick files<CR>', 'Smart find file')
-map('<leader>fh', ':Pick help<CR>', 'Find in help')
-map('<leader>fw', ':Pick grep<CR>', 'Find content')
-map('<leader>fW', ':Pick grep_live<CR>', 'Find content(live)')
-map('<leader>ec', ':e $MYVIMRC<CR>', 'Setting')
-map('<leader>gb', function()
-  require('mini.git').show_at_cursor()
-end, 'Git blame line (mini.git)')
-map('<leader>gg', function()
-  vim.cmd 'terminal lazygit'
-  vim.wo.winfixheight = true
-  vim.bo.filetype = 'lazygit'
-end, 'Open LazyGit in terminal')
-map('<leader><leader>', ':Pick buffers<CR>', 'Find buffers')
+map('<leader>ff', function()
+  MiniPick.builtin.files { tool = 'fd' }
+end, 'Pick files')
+map('<leader>fw', function()
+  MiniPick.builtin.grep_live()
+end, 'Pick grep')
+map('<leader>fh', function()
+  MiniPick.builtin.help()
+end, 'Help')
+map('<leader>fl', function()
+  MiniPick.builtin.buffers()
+end, 'Pick buffers')
+map('<leader>fk', function()
+  MiniExtra.pickers.keymaps()
+end, 'Pick keymaps')
+map('<leader>fo', function()
+  MiniExtra.pickers.oldfiles()
+end, 'Pick recent file')
+map('<leader>fd', function()
+  MiniExtra.pickers.diagnostic()
+end, 'Pick diagnostics')
+map('<leader>fm', function()
+  MiniExtra.pickers.marks()
+end, 'Pick marks')
+map('<leader>fH', function()
+  MiniExtra.pickers.hl_groups()
+end, 'Pick highlight groups')
+map('<leader>fch', function()
+  MiniExtra.pickers.history()
+end, 'Pick command history')
+-- map('<leader>fcl', function()
+--   MiniExtra.pickers.colorschemes()
+-- end, 'Pick colorscheme')
+
+map('<leader>fgb', function()
+  MiniExtra.pickers.git_branches()
+end, 'Git Branches')
+map('<leader>fgc', function()
+  MiniExtra.pickers.git_commits()
+end, 'Git Commits')
+map('<leader>fgf', function()
+  MiniExtra.pickers.git_files()
+end, 'Git Files')
+map('<leader>fgh', function()
+  MiniExtra.pickers.git_hunks()
+end, 'Git Hunks')
 
 -- Oil
 function _G.get_oil_winbar()
@@ -97,6 +126,18 @@ end
 
 local detail = false
 require('oil').setup {
+  git = {
+    show_git_status = true,
+    add = function()
+      return false
+    end,
+    mv = function()
+      return false
+    end,
+    rm = function()
+      return false
+    end,
+  },
   default_file_explorer = true,
   keymaps = {
     ['<C-h>'] = false,
@@ -138,22 +179,18 @@ overseer.setup {
   template_timeout = 8000,
   templates = {
     'builtin',
+    'cmake',
     'python',
     'grun_option',
     'run_script',
-    'cpp',
-    -- 'cmake',
   },
   component_aliases = {
     default = {
-      { 'display_duration', detail_level = 1 },
-      'on_output_summarize',
       'on_exit_set_status',
       'on_complete_notify',
     },
     default_vscode = {
       'default',
-      'display_duration',
       'task_list_on_start',
       'on_output_quickfix',
       'unique',
@@ -188,9 +225,7 @@ overseer.add_template_hook({
   util.add_component(task_defn, { 'on_output_write_file', filename = task_defn.cmd[1] .. '.log' })
   util.add_component(task_defn, { 'on_output_quickfix', open_on_exit = 'failure' })
   util.add_component(task_defn, 'on_complete_notify')
-  util.add_component(task_defn, { 'display_duration', detail_level = 1 })
   util.add_component(task_defn, 'unique')
-  util.remove_component(task_defn, 'on_output_summarize')
 end)
 
 overseer.add_template_hook({
@@ -218,3 +253,61 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.winfixbuf = true
   end,
 })
+
+-- Neotree
+require('neo-tree').setup {
+  close_if_last_window = false,
+  popup_border_style = 'rounded',
+  enable_git_status = true,
+  enable_diagnostics = true,
+
+  open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' },
+
+  filesystem = {
+    follow_current_file = { enabled = true },
+    use_libuv_file_watcher = true,
+    filtered_items = {
+      visible = false,
+      hide_dotfiles = true,
+      hide_gitignored = true,
+      hide_by_name = { 'node_modules', '.git', '__pycache__', '.DS_Store' },
+    },
+  },
+
+  window = {
+    position = 'left',
+    width = 35,
+    mappings = {
+      ['l'] = 'open',
+      ['h'] = 'close_node',
+      ['H'] = 'toggle_hidden',
+      ['/'] = 'fuzzy_finder',
+      ['.'] = 'set_root',
+      ['Y'] = {
+        function(state)
+          local node = state.tree:get_node()
+          vim.fn.setreg('+', node:get_id())
+        end,
+        desc = 'Copy Path',
+      },
+    },
+  },
+
+  default_component_configs = {
+    indent = {
+      with_expanders = true,
+      expander_collapsed = '▸',
+      expander_expanded = '▾',
+    },
+    icon = {
+      folder_closed = ' ',
+      folder_open = ' ',
+      folder_empty = ' ',
+    },
+  },
+
+  sources = { 'filesystem', 'git_status' },
+}
+map('<leader>e', function()
+  require('neo-tree.command').execute { toggle = true }
+end, 'Toggle Neo-tree')

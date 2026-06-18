@@ -59,7 +59,7 @@ Sky.snippets = {
     cclass = [[class ${1:name} {
 public:
 private:
-}]],
+};]],
 
     clambda = [[[${1: }](${2:init-statement}) {
   ${3:statement}

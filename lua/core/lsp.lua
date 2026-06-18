@@ -8,26 +8,29 @@ vim.diagnostic.config {
     prefix = '',
     source = 'if_many',
   },
+  signs = true,
+  update_in_insert = false,
   float = {
+    enabled = true,
     severity_sort = true,
     source = 'if_many',
     border = 'single',
   },
   severity_sort = true,
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = '',
-      [vim.diagnostic.severity.WARN] = '',
-      [vim.diagnostic.severity.INFO] = '',
-      [vim.diagnostic.severity.HINT] = '',
-    },
-    numhl = {
-      [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-      [vim.diagnostic.severity.WARN] = 'WarningMsg',
-      [vim.diagnostic.severity.INFO] = 'InfoFloat',
-      [vim.diagnostic.severity.HINT] = 'HintFloat',
-    },
-  },
+  -- signs = {
+  --   text = {
+  --     [vim.diagnostic.severity.ERROR] = '',
+  --     [vim.diagnostic.severity.WARN] = '',
+  --     [vim.diagnostic.severity.INFO] = '',
+  --     [vim.diagnostic.severity.HINT] = '',
+  --   },
+  -- numhl = {
+  --   [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+  --   [vim.diagnostic.severity.WARN] = 'WarningMsg',
+  --   [vim.diagnostic.severity.INFO] = 'InfoFloat',
+  --   [vim.diagnostic.severity.HINT] = 'HintFloat',
+  -- },
+  -- },
 }
 
 vim.opt.pumheight = 12

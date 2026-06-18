@@ -3,6 +3,7 @@ if vim.b.did_my_ftplugin then
 end
 vim.b.did_my_ftplugin = true
 vim.lsp.enable 'marksman'
+
 require('render-markdown').setup {
   callout = {
     abstract = {

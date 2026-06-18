@@ -2,18 +2,18 @@
 require('mason').setup()
 
 -- Lspsaga
-require('lspsaga').setup {
-  symbol_in_winbar = {
-    separator = ' ',
-  },
-  ui = {
-    code_action = '',
-  },
-  lightbulb = {
-    enable = false,
-    virtual_text = false,
-  },
-}
+-- require('lspsaga').setup {
+--   symbol_in_winbar = {
+--     separator = ' ',
+--   },
+--   ui = {
+--     code_action = '',
+--   },
+--   lightbulb = {
+--     enable = false,
+--     virtual_text = false,
+--   },
+-- }
 
 -- Outline
 require('aerial').setup {
@@ -70,7 +70,6 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'InsertEnter' }, {
         end,
         -- python = { 'yapf', 'isort' },
         python = { 'ruff' },
-        snakemake = { 'snakefmt' },
         markdown = { 'prettierd', 'cbfmt' },
         typst = { 'typstyle' },
         nix = { 'nixfmt' },
@@ -83,7 +82,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'InsertEnter' }, {
       formatters = {
         cbfmt = { command = 'cbfmt', args = { '-w', '--config', vim.fn.expand '~' .. '/.config/cbfmt.toml', '$FILENAME' } },
         taplo = { command = 'taplo', args = { 'fmt', '--option', 'indent_tables=false', '-' } },
-        ruff_fix = {
+        ruff = {
           command = 'ruff',
           args = { 'format', '--stdin-filename', '$FILENAME', '-' },
           stdin = true,

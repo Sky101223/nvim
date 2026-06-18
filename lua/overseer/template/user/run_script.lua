@@ -19,7 +19,6 @@ return {
       cwd = params.cwd,
       components = {
         -- "task_list_on_start",
-        'display_duration',
         'on_exit_set_status',
         'on_complete_notify',
       },
