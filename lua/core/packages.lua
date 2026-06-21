@@ -4,12 +4,8 @@ Sky.packages = {
   sites = {
     { src = 'https://github.com/vague-theme/vague.nvim' },
     { src = 'https://github.com/catppuccin/nvim' },
+    { src = 'https://github.com/olimorris/onedarkpro.nvim' },
     { src = 'https://github.com/stevearc/conform.nvim' },
-    {
-      src = 'https://github.com/nvim-neo-tree/neo-tree.nvim',
-      version = vim.version.range '3',
-    },
-    { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
     { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
     { src = 'https://github.com/bullets-vim/bullets.vim' },
     { src = 'https://github.com/mason-org/mason.nvim' },
@@ -21,6 +17,7 @@ Sky.packages = {
     { src = 'https://github.com/nvim-mini/mini.nvim' },
     { src = 'https://github.com/stevearc/oil.nvim' },
     { src = 'https://github.com/lewis6991/gitsigns.nvim' },
+    { src = 'https://github.com/attilarepka/header.nvim' },
 
     { src = 'https://github.com/kawre/leetcode.nvim' },
     { src = 'https://github.com/MunifTanjim/nui.nvim' },

@@ -12,37 +12,37 @@ require('mini.ai').setup {
 require('mini.icons').setup {
   style = 'glyph',
   file = {
-    README = { glyph = '󰆈 ', hl = 'MiniIconsYellow' },
-    ['README.md'] = { glyph = '󰆈 ', hl = 'MiniIconsYellow' },
+    README = { glyph = '󰆈', hl = 'MiniIconsYellow' },
+    ['README.md'] = { glyph = '󰆈', hl = 'MiniIconsYellow' },
   },
   filetype = {
-    bash = { glyph = '󱆃 ', hl = 'MiniIconsGreen' },
-    sh = { glyph = '󱆃 ', hl = 'MiniIconsGrey' },
-    toml = { glyph = '󱄽 ', hl = 'MiniIconsOrange' },
-    cpp = { glyph = '󰙲 ', hl = 'MiniIconsCyan' },
+    bash = { glyph = '󱆃', hl = 'MiniIconsGreen' },
+    sh = { glyph = '󱆃', hl = 'MiniIconsGrey' },
+    toml = { glyph = '󱄽', hl = 'MiniIconsOrange' },
+    cpp = { glyph = '󰙲', hl = 'MiniIconsCyan' },
+    c = { glyph = '󰙱', hl = 'MiniIconsCyan' },
   },
 
   extension = {
-    h = { glyph = ' ', hl = 'MiniIconsPurple' },
-    hpp = { glyph = ' ', hl = 'MiniIconsMagenta' },
-    hxx = { glyph = ' ', hl = 'MiniIconsMagenta' },
+    h = { glyph = '󰙱', hl = 'MiniIconsPurple' },
+    hpp = { glyph = '󰙲', hl = 'MiniIconsPurple' },
   },
 }
 
-require('mini.surround').setup {
-  mappings = {
-    add = 'sa', -- Add surrounding in Normal and Visual modes
-    delete = 'sd', -- Delete surrounding
-    find = 'sf', -- Find surrounding (to the right)
-    find_left = 'sF', -- Find surrounding (to the left)
-    highlight = 'sh', -- Highlight surrounding
-    replace = 'sr', -- Replace surrounding
-    update_n_lines = 'sn', -- Update `n_lines`
-
-    suffix_last = 'l', -- Suffix to search with "prev" method
-    suffix_next = 'n', -- Suffix to search with "next" method
-  },
-}
+-- require('mini.surround').setup {
+--   mappings = {
+--     add = 'sa', -- Add surrounding in Normal and Visual modes
+--     delete = 'sd', -- Delete surrounding
+--     find = 'sf', -- Find surrounding (to the right)
+--     find_left = 'sF', -- Find surrounding (to the left)
+--     highlight = 'sh', -- Highlight surrounding
+--     replace = 'sr', -- Replace surrounding
+--     update_n_lines = 'sn', -- Update `n_lines`
+--
+--     suffix_last = 'l', -- Suffix to search with "prev" method
+--     suffix_next = 'n', -- Suffix to search with "next" method
+--   },
+-- }
 
 require('mini.pick').setup()
 require('mini.extra').setup()
@@ -59,7 +59,7 @@ require('mini.notify').setup {
     enable = false,
   },
 }
-require('mini.pairs').setup()
+-- require('mini.pairs').setup()
 require('mini.comment').setup()
 
 -- Keymaps for the 'mini.nvim' plugin
@@ -76,7 +76,7 @@ end, 'Pick grep')
 map('<leader>fh', function()
   MiniPick.builtin.help()
 end, 'Help')
-map('<leader>fl', function()
+map('<leader><leader>', function()
   MiniPick.builtin.buffers()
 end, 'Pick buffers')
 map('<leader>fk', function()
@@ -254,60 +254,29 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
--- Neotree
-require('neo-tree').setup {
-  close_if_last_window = false,
-  popup_border_style = 'rounded',
-  enable_git_status = true,
-  enable_diagnostics = true,
+-- Header
+local function get_project_name()
+  local cwd = vim.fn.getcwd()
+  return vim.fn.fnamemodify(cwd, ':t')
+end
 
-  open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' },
+require('header').setup {
+  allow_autocmds = true,
 
-  filesystem = {
-    follow_current_file = { enabled = true },
-    use_libuv_file_watcher = true,
-    filtered_items = {
-      visible = false,
-      hide_dotfiles = true,
-      hide_gitignored = true,
-      hide_by_name = { 'node_modules', '.git', '__pycache__', '.DS_Store' },
-    },
-  },
+  author = 'Haotian Li',
+  project = get_project_name(),
 
-  window = {
-    position = 'left',
-    width = 35,
-    mappings = {
-      ['l'] = 'open',
-      ['h'] = 'close_node',
-      ['H'] = 'toggle_hidden',
-      ['/'] = 'fuzzy_finder',
-      ['.'] = 'set_root',
-      ['Y'] = {
-        function(state)
-          local node = state.tree:get_node()
-          vim.fn.setreg('+', node:get_id())
-        end,
-        desc = 'Copy Path',
-      },
-    },
-  },
+  date_created = true,
+  date_created_fmt = '%d/%m/%y',
 
-  default_component_configs = {
-    indent = {
-      with_expanders = true,
-      expander_collapsed = '▸',
-      expander_expanded = '▾',
-    },
-    icon = {
-      folder_closed = ' ',
-      folder_open = ' ',
-      folder_empty = ' ',
-    },
-  },
-
-  sources = { 'filesystem', 'git_status' },
+  file_name = true,
+  date_modified = false,
+  line_separator = '',
+  use_block_header = false,
+  copyright_text = nil,
+  license_from_file = false,
 }
-map('<leader>e', function()
-  require('neo-tree.command').execute { toggle = true }
-end, 'Toggle Neo-tree')
+
+map('<leader>h', function()
+  require('header').add_header()
+end, 'Add header')

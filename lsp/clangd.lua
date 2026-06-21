@@ -7,8 +7,7 @@ return {
     },
     offsetEncoding = { 'utf-8', 'utf-16' },
   },
-  -- cmd = { 'clangd', '--malloc-trim' },
-  cmd = { 'clangd', '--background-index' },
+  cmd = { 'clangd', '--malloc-trim', '--background-index', '--compile-commands-dir=build' },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
   root_markers = {
     'CMakeLists.txt',

@@ -61,8 +61,12 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 -- })
 
 vim.api.nvim_create_autocmd('TermOpen', {
-  pattern = '*',
+  pattern = 'term://*',
   callback = function()
+    if vim.bo.buftype ~= 'terminal' then
+      return
+    end
+
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false
   end,

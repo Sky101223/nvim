@@ -1,5 +1,5 @@
 Sky = Sky or {}
-require 'core.snippets'
+-- require 'core.snippets'
 
 vim.diagnostic.config {
   underline = true,
@@ -8,7 +8,6 @@ vim.diagnostic.config {
     prefix = '',
     source = 'if_many',
   },
-  signs = true,
   update_in_insert = false,
   float = {
     enabled = true,
@@ -17,20 +16,20 @@ vim.diagnostic.config {
     border = 'single',
   },
   severity_sort = true,
-  -- signs = {
-  --   text = {
-  --     [vim.diagnostic.severity.ERROR] = '',
-  --     [vim.diagnostic.severity.WARN] = '',
-  --     [vim.diagnostic.severity.INFO] = '',
-  --     [vim.diagnostic.severity.HINT] = '',
-  --   },
-  -- numhl = {
-  --   [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-  --   [vim.diagnostic.severity.WARN] = 'WarningMsg',
-  --   [vim.diagnostic.severity.INFO] = 'InfoFloat',
-  --   [vim.diagnostic.severity.HINT] = 'HintFloat',
-  -- },
-  -- },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.INFO] = '',
+      [vim.diagnostic.severity.HINT] = '',
+    },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+      [vim.diagnostic.severity.WARN] = 'WarningMsg',
+      [vim.diagnostic.severity.INFO] = 'InfoFloat',
+      [vim.diagnostic.severity.HINT] = 'HintFloat',
+    },
+  },
 }
 
 vim.opt.pumheight = 12
@@ -41,7 +40,34 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- [completion]
     if client:supports_method 'textDocument/completion' then
-      vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+      local chars = {};
+      for i = 32, 126 do
+        table.insert(chars, string.char(i));
+      end
+
+      client.server_capabilities.completionProvider.triggerCharacters = chars
+      vim.lsp.completion.enable(true, client.id, event.buf, {
+        autotrigger = true,
+        -- convert = function(item)
+        --   local label = item.label or ""
+        --   local MAX_WIDTH = 30
+        --   local ellipsis = "…"
+        --
+        --   local abbr
+        --   if vim.fn.strdisplaywidth(label) > MAX_WIDTH then
+        --     abbr = vim.fn.strcharpart(label, 0, MAX_WIDTH - 1) .. ellipsis
+        --   else
+        --     abbr = label
+        --   end
+        --
+        --   return {
+        --     word = item.insertText or label,
+        --     abbr = abbr,
+        --     kind = item.kind,
+        --     menu = item.detail or "",
+        --   }
+        -- end,
+      })
     end
 
     -- [inlay hint]
@@ -84,7 +110,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       -- Mimic tmux formula: 8 * width - 20 * height
       local value = 8 * width - 20 * height
       if value < 0 then
-        vim.cmd 'split' -- vertical space is more: horizontal split
+        vim.cmd 'split'  -- vertical space is more: horizontal split
       else
         vim.cmd 'vsplit' -- horizontal space is more: vertical split
       end
@@ -165,26 +191,33 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
 
--- Load snippets
-Sky.load_snippets = function(snippets)
-  if type(snippets) ~= 'table' then
-    return
-  end
-
-  local count = 0
-  for trigger, body in pairs(snippets) do
-    count = count + 1
-    vim.keymap.set('ia', trigger, function()
-      vim.snippet.expand(body)
-    end)
-  end
-
-  vim.notify(string.format(' 󰄬  Loaded %d snippets', count), vim.log.levels.INFO)
+vim.keymap.set("n", "<leader>u", function()
+  vim.cmd.packadd("nvim.undotree");
+  vim.cmd("Undotree");
 end
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'cpp',
-  callback = function()
-    Sky.load_snippets(Sky.snippets.cpp)
-  end,
-})
+, { desc = "Toggle Undotree" })
+
+-- Load snippets
+-- Sky.load_snippets = function(snippets)
+--   if type(snippets) ~= 'table' then
+--     return
+--   end
+--
+--   -- local count = 0
+--   for trigger, body in pairs(snippets) do
+--     count = count + 1
+--     vim.keymap.set('ia', trigger, function()
+--       vim.snippet.expand(body)
+--     end)
+--   end
+--
+--   -- vim.notify(string.format(' 󰄬  Loaded %d snippets', count), vim.log.levels.INFO)
+-- end
+
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = 'cpp',
+--   callback = function()
+--     Sky.load_snippets(Sky.snippets.cpp)
+--   end,
+-- })

@@ -3,12 +3,16 @@ return {
   builder = function()
     return {
       cmd = 'ctest',
-      args = { '--test-dir', './build' },
+      args = {
+        '--test-dir',
+        'build',
+        '--output-on-failure',
+      },
       cwd = vim.fn.getcwd(),
     }
   end,
   tags = { 'cmake', 'test' },
   condition = {
-    filetype = { 'c', 'cpp', 'h', 'hpp' },
+    filetype = { 'c', 'cpp', 'h', 'hpp', 'cmake' },
   },
 }
