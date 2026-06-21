@@ -44,9 +44,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- [completion]
     if client:supports_method 'textDocument/completion' then
-      local chars = {};
+      local chars = {}
       for i = 32, 126 do
-        table.insert(chars, string.char(i));
+        table.insert(chars, string.char(i))
       end
 
       client.server_capabilities.completionProvider.triggerCharacters = chars
@@ -114,7 +114,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       -- Mimic tmux formula: 8 * width - 20 * height
       local value = 8 * width - 20 * height
       if value < 0 then
-        vim.cmd 'split'  -- vertical space is more: horizontal split
+        vim.cmd 'split' -- vertical space is more: horizontal split
       else
         vim.cmd 'vsplit' -- horizontal space is more: vertical split
       end
@@ -195,12 +195,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
 
-vim.keymap.set("n", "<leader>u", function()
-  vim.cmd.packadd("nvim.undotree");
-  vim.cmd("Undotree");
-end
+vim.keymap.set('n', '<leader>u', function()
+  vim.cmd.packadd 'nvim.undotree'
+  vim.cmd 'Undotree'
+end, { desc = 'Toggle Undotree' })
 
-, { desc = "Toggle Undotree" })
+vim.filetype.add {
+  extension = {
+    h = 'c',
+    hpp = 'cpp',
+  },
+}
 
 -- Load snippets
 -- Sky.load_snippets = function(snippets)

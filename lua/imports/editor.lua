@@ -56,7 +56,7 @@ require('mini.notify').setup {
     zindex = 50,
   },
   lsp_progress = {
-    enable = false,
+    enable = true,
   },
 }
 -- require('mini.pairs').setup()
