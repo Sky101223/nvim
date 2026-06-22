@@ -31,22 +31,25 @@ Sky.packages = {
     'practice',
   },
 }
-
 Sky.load = function()
-  vim.pack.add(Sky.packages.sites, { load = false })
-
-  local success = 0
-  local failed = {}
-  for _, file in ipairs(Sky.packages.imports) do
-    local mod = 'imports.' .. file
-
-    local ok, err = pcall(require, mod)
-    if ok then
-      success = success + 1
-    else
-      table.insert(failed, { mod = mod, err = err })
-    end
-
-    require(mod)
-  end
+  vim.pack.add(Sky.packages.sites, {
+    dir = vim.fn.stdpath("data") .. "/site/pack",
+    load = false 
+  })
+  vim.api.nvim_create_autocmd("VimEnter", {
+    once = true,
+    callback = function()
+      vim.cmd("packloadall!")
+      for _, file in ipairs(Sky.packages.imports) do
+        local mod = "imports." .. file
+        local ok, err = pcall(require, mod)
+        if not ok then
+          vim.notify(
+            string.format("Failed to load %s:\n%s", mod, err),
+            vim.log.levels.ERROR
+          )
+        end
+      end
+    end,
+  })
 end
