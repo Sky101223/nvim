@@ -94,8 +94,8 @@ vim.keymap.set('n', '<leader>fJ', jump_to_file_lnum_from_all_windows, { desc = '
 
 vim.keymap.set('n', '<leader>tp', function()
   local terminals = {
-    { name = 'ROOT', cmd = 'pwsh -NoLogo' },
-    { name = 'Python', cmd = 'python' },
+    { name = 'ROOT', cmd = 'bash' },
+    { name = 'Python', cmd = 'python3' },
   }
   vim.ui.select(terminals, {
     prompt = 'Pick terminal:',

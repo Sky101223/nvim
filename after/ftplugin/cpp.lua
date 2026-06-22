@@ -12,8 +12,8 @@ end
 vim.lsp.enable 'clangd'
 
 vim.keymap.set('n', '<localleader>r', function()
-  vim.cmd '!g++ -std=c++23 -Wall -Wextra % -o %:r.exe && %:r.exe'
+  vim.cmd '!g++ -std=c++23 -Wall -Wextra % -o %:r && %:r'
 end, { buffer = true })
 vim.keymap.set('n', '<localleader>b', function()
-  vim.cmd '!g++ -std=c++23 -Wall -Wextra % -o %:r.exe'
+  vim.cmd '!g++ -std=c++23 -Wall -Wextra % -o %:r'
 end, { buffer = true, silent = true })

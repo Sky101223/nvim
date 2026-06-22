@@ -68,7 +68,7 @@ local map = function(key, func, desc)
 end
 
 map('<leader>ff', function()
-  MiniPick.builtin.files { tool = 'fd' }
+  MiniPick.builtin.files { tool = 'rg' }
 end, 'Pick files')
 map('<leader>fw', function()
   MiniPick.builtin.grep_live()
