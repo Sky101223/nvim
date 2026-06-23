@@ -5,6 +5,7 @@ require('leetcode').setup {
     translator = false,
   },
   arg = 'Leet',
+  logging = false,
   lang = 'cpp',
   injector = {
     ['cpp'] = {
