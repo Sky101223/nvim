@@ -4,8 +4,8 @@ require('leetcode').setup {
     enabled = false,
     translator = false,
   },
-  arg = 'leet',
-  lang = 'python',
+  arg = 'Leet',
+  lang = 'cpp',
   injector = {
     ['cpp'] = {
       imports = function()
@@ -14,6 +14,15 @@ require('leetcode').setup {
           '#include <vector>',
           '',
           'using namespace std;',
+        }
+      end,
+    },
+
+    ['c'] = {
+      imports = function()
+        return {
+          '#include <stdlib.h>',
+          '',
         }
       end,
     },

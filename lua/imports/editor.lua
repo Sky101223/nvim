@@ -16,8 +16,8 @@ require('mini.icons').setup {
     ['README.md'] = { glyph = '󰆈', hl = 'MiniIconsYellow' },
   },
   filetype = {
-    bash = { glyph = '󱆃', hl = 'MiniIconsGreen' },
-    sh = { glyph = '󱆃', hl = 'MiniIconsGrey' },
+    bash = { glyph = '', hl = 'MiniIconsGreen' },
+    sh = { glyph = '', hl = 'MiniIconsGrey' },
     toml = { glyph = '󱄽', hl = 'MiniIconsOrange' },
     cpp = { glyph = '󰙲', hl = 'MiniIconsCyan' },
     c = { glyph = '󰙱', hl = 'MiniIconsCyan' },

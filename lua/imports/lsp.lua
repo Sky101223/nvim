@@ -92,7 +92,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'InsertEnter' }, {
         cjfmt = {
           command = 'cjfmt',
           args = { '-f', '$FILENAME' },
-          stdin = false
+          stdin = false,
         },
       },
     }
@@ -118,12 +118,12 @@ end, {
 })
 
 -- Cangjie LSP
-require("cangjie-nvim").setup({
-  auto_install = true
-})
+require('cangjie-nvim').setup {
+  auto_install = true,
+}
 
-vim.filetype.add({
+vim.filetype.add {
   extension = {
-    cj = "cangjie"
-  }
-})
+    cj = 'cangjie',
+  },
+}
