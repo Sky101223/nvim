@@ -210,27 +210,3 @@ vim.filetype.add {
     hpp = 'cpp',
   },
 }
-
--- Load snippets
--- Sky.load_snippets = function(snippets)
---   if type(snippets) ~= 'table' then
---     return
---   end
---
---   -- local count = 0
---   for trigger, body in pairs(snippets) do
---     count = count + 1
---     vim.keymap.set('ia', trigger, function()
---       vim.snippet.expand(body)
---     end)
---   end
---
---   -- vim.notify(string.format(' 󰄬  Loaded %d snippets', count), vim.log.levels.INFO)
--- end
-
--- vim.api.nvim_create_autocmd('FileType', {
---   pattern = 'cpp',
---   callback = function()
---     Sky.load_snippets(Sky.snippets.cpp)
---   end,
--- })

@@ -22,8 +22,6 @@ Sky.packages = {
     { src = 'https://github.com/kawre/leetcode.nvim' },
     { src = 'https://github.com/MunifTanjim/nui.nvim' },
     { src = 'https://github.com/nvim-lua/plenary.nvim' },
-
-    { src = 'https://gitcode.com/ystyle/cangjie-nvim' },
   },
 
   imports = {
@@ -35,21 +33,18 @@ Sky.packages = {
 }
 Sky.load = function()
   vim.pack.add(Sky.packages.sites, {
-    dir = vim.fn.stdpath("data") .. "/site/pack",
-    load = false 
+    dir = vim.fn.stdpath 'data' .. '/site/pack',
+    load = false,
   })
-  vim.api.nvim_create_autocmd("VimEnter", {
+  vim.api.nvim_create_autocmd('VimEnter', {
     once = true,
     callback = function()
-      vim.cmd("packloadall!")
+      vim.cmd 'packloadall!'
       for _, file in ipairs(Sky.packages.imports) do
-        local mod = "imports." .. file
+        local mod = 'imports.' .. file
         local ok, err = pcall(require, mod)
         if not ok then
-          vim.notify(
-            string.format("Failed to load %s:\n%s", mod, err),
-            vim.log.levels.ERROR
-          )
+          vim.notify(string.format('Failed to load %s:\n%s', mod, err), vim.log.levels.ERROR)
         end
       end
     end,
