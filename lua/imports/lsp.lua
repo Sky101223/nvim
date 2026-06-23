@@ -79,8 +79,6 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'InsertEnter' }, {
         -- python = { 'yapf', 'isort' },
         python = { 'ruff' },
         markdown = { 'prettierd', 'cbfmt' },
-        typst = { 'typstyle' },
-        nix = { 'nixfmt' },
         json = { 'prettierd' },
         toml = { 'taplo' },
         tex = { 'tex-fmt' },
