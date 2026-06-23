@@ -26,6 +26,7 @@ require('mini.icons').setup {
   extension = {
     h = { glyph = '󰙱', hl = 'MiniIconsPurple' },
     hpp = { glyph = '󰙲', hl = 'MiniIconsPurple' },
+    cj = { glyph = '󱂀', hl = 'MiniIconsBlue' },
   },
 }
 

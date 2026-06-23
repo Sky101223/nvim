@@ -11,6 +11,9 @@ end
 
 vim.lsp.enable 'clangd'
 
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+
 vim.keymap.set('n', '<localleader>r', function()
   vim.cmd '!g++ -std=c++23 -Wall -Wextra % -o %:r.exe && %:r.exe'
 end, { buffer = true })
