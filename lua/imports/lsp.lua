@@ -78,6 +78,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'InsertEnter' }, {
         tex = { 'tex-fmt' },
         cmake = { 'cmakelang' },
         rust = { 'rust-analyzer' },
+        cangjie = { 'cjfmt' },
       },
       formatters = {
         cbfmt = { command = 'cbfmt', args = { '-w', '--config', vim.fn.expand '~' .. '/.config/cbfmt.toml', '$FILENAME' } },
@@ -88,6 +89,11 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'InsertEnter' }, {
           stdin = true,
         },
         lcg_clang_format = { command = 'lcg-clang-format-8.0.0', args = { '$FILENAME' } },
+        cjfmt = {
+          command = 'cjfmt',
+          args = { '-f', '$FILENAME' },
+          stdin = false
+        },
       },
     }
   end,
@@ -109,4 +115,15 @@ vim.api.nvim_create_user_command('ConformEnable', function()
   vim.g.disable_autoformat = false
 end, {
   desc = 'Re-enable autoformat-on-save',
+})
+
+-- Cangjie LSP
+require("cangjie-nvim").setup({
+  auto_install = true
+})
+
+vim.filetype.add({
+  extension = {
+    cj = "cangjie"
+  }
 })

@@ -9,6 +9,9 @@ else
   vim.lsp.enable 'clang-format'
 end
 
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+
 vim.lsp.enable 'clangd'
 
 vim.keymap.set('n', '<localleader>r', function()
