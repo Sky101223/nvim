@@ -48,7 +48,7 @@ require('mini.pick').setup()
 require('mini.extra').setup()
 -- require('mini.git').setup()
 -- require('mini.tabline').setup()
--- require('mini.indentscope').setup()
+require('mini.indentscope').setup()
 require('mini.notify').setup {
   window = {
     winblend = 0,

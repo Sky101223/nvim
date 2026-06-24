@@ -8,8 +8,8 @@ require('catppuccin').setup {
   flavour = 'mocha',
   -- flavour = 'latte',
   styles = {
-    -- keywords = { 'italic' },
-    -- functions = { 'bold' },
+    keywords = { 'italic' },
+    functions = { 'bold' },
   },
   transparent_background = true,
   term_colors = true,
@@ -64,5 +64,5 @@ require('onedarkpro').setup {
 }
 
 -- Set color
-vim.cmd 'colorscheme vague'
+vim.cmd 'colorscheme catppuccin'
 vim.cmd.hi 'statusline guibg=NONE'
