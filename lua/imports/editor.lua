@@ -48,17 +48,8 @@ require('mini.pick').setup()
 require('mini.extra').setup()
 -- require('mini.git').setup()
 -- require('mini.tabline').setup()
-require('mini.indentscope').setup()
-require('mini.notify').setup {
-  window = {
-    winblend = 0,
-    border = 'rounded',
-    zindex = 50,
-  },
-  lsp_progress = {
-    enable = true,
-  },
-}
+-- require('mini.indentscope').setup()
+require('mini.notify').setup {}
 -- require('mini.pairs').setup()
 require('mini.comment').setup()
 
