@@ -5,8 +5,7 @@ require('vague').setup {
 
 -- Catppuccin
 require('catppuccin').setup {
-  flavour = 'mocha',
-  -- flavour = 'latte',
+  flavour = 'macchiato', -- macchiato mocha
   styles = {
     keywords = { 'italic' },
     functions = { 'bold' },
