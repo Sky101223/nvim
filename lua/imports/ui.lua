@@ -51,18 +51,6 @@ require('catppuccin').setup {
   },
 }
 
--- One Dark Pro
-require('onedarkpro').setup {
-  styles = {
-    comments = 'italic',
-  },
-  options = {
-    cursorline = true,
-    transparency = true,
-    terminal_colors = true,
-  },
-}
-
 -- Set color
 vim.cmd 'colorscheme catppuccin'
 vim.cmd.hi 'statusline guibg=NONE'

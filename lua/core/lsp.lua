@@ -22,14 +22,6 @@ vim.diagnostic.config {
       [vim.diagnostic.severity.WARN] = 'W',
       [vim.diagnostic.severity.INFO] = 'I',
       [vim.diagnostic.severity.HINT] = 'H',
-      -- [vim.diagnostic.severity.ERROR] = '',
-      -- [vim.diagnostic.severity.WARN] = '',
-      -- [vim.diagnostic.severity.INFO] = '',
-      -- [vim.diagnostic.severity.HINT] = '',
-      -- [vim.diagnostic.severity.ERROR] = '',
-      -- [vim.diagnostic.severity.WARN] = '',
-      -- [vim.diagnostic.severity.INFO] = '',
-      -- [vim.diagnostic.severity.HINT] = '',
     },
     numhl = {
       [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
@@ -48,34 +40,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- [completion]
     if client:supports_method 'textDocument/completion' then
-      local chars = {}
-      for i = 32, 126 do
-        table.insert(chars, string.char(i))
-      end
-
-      client.server_capabilities.completionProvider.triggerCharacters = chars
-      vim.lsp.completion.enable(true, client.id, event.buf, {
-        autotrigger = true,
-        -- convert = function(item)
-        --   local label = item.label or ""
-        --   local MAX_WIDTH = 30
-        --   local ellipsis = "…"
-        --
-        --   local abbr
-        --   if vim.fn.strdisplaywidth(label) > MAX_WIDTH then
-        --     abbr = vim.fn.strcharpart(label, 0, MAX_WIDTH - 1) .. ellipsis
-        --   else
-        --     abbr = label
-        --   end
-        --
-        --   return {
-        --     word = item.insertText or label,
-        --     abbr = abbr,
-        --     kind = item.kind,
-        --     menu = item.detail or "",
-        --   }
-        -- end,
-      })
+      -- local chars = {}
+      -- for i = 32, 126 do
+      --   table.insert(chars, string.char(i))
+      -- end
+      --
+      -- client.server_capabilities.completionProvider.triggerCharacters = chars
+      vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
     end
 
     -- [inlay hint]

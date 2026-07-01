@@ -1,20 +1,6 @@
 -- Mason
 require('mason').setup()
 
--- Lspsaga
--- require('lspsaga').setup {
---   symbol_in_winbar = {
---     separator = ' ',
---   },
---   ui = {
---     code_action = '',
---   },
---   lightbulb = {
---     enable = false,
---     virtual_text = false,
---   },
--- }
-
 -- Outline
 require('aerial').setup {
   icons = {
@@ -84,6 +70,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'InsertEnter' }, {
         tex = { 'tex-fmt' },
         cmake = { 'cmakelang' },
         rust = { 'rust-analyzer' },
+        go = { 'goimports' },
       },
       formatters = {
         cbfmt = { command = 'cbfmt', args = { '-w', '--config', vim.fn.expand '~' .. '/.config/cbfmt.toml', '$FILENAME' } },

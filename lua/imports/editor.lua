@@ -49,7 +49,7 @@ require('mini.extra').setup()
 -- require('mini.git').setup()
 -- require('mini.tabline').setup()
 -- require('mini.indentscope').setup()
-require('mini.notify').setup {}
+-- require('mini.notify').setup {}
 -- require('mini.pairs').setup()
 require('mini.comment').setup()
 
