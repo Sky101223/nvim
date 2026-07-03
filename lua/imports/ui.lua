@@ -56,7 +56,7 @@ require('onedarkpro').setup {
     comments = 'italic',
   },
   options = {
-    cursorline = false,
+    cursorline = true,
     transparency = true,
     terminal_colors = true,
   },
