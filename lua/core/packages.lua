@@ -4,6 +4,7 @@ Sky.packages = {
   sites = {
     { src = 'https://github.com/vague-theme/vague.nvim' },
     { src = 'https://github.com/catppuccin/nvim' },
+    { src = 'https://github.com/olimorris/onedarkpro.nvim' },
     { src = 'https://github.com/stevearc/conform.nvim' },
     { src = 'https://github.com/bullets-vim/bullets.vim' },
     { src = 'https://github.com/mason-org/mason.nvim' },

@@ -5,7 +5,7 @@ require('vague').setup {
 
 -- Catppuccin
 require('catppuccin').setup {
-  flavour = 'macchiato', -- macchiato mocha
+  flavour = 'mocha',
   styles = {
     keywords = { 'italic' },
     functions = { 'bold' },
@@ -50,6 +50,18 @@ require('catppuccin').setup {
   },
 }
 
+-- One Dark Pro
+require('onedarkpro').setup {
+  styles = {
+    comments = 'italic',
+  },
+  options = {
+    cursorline = false,
+    transparency = true,
+    terminal_colors = true,
+  },
+}
+
 -- Set color
-vim.cmd 'colorscheme catppuccin'
+vim.cmd 'colorscheme onedark'
 vim.cmd.hi 'statusline guibg=NONE'
