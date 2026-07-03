@@ -63,5 +63,5 @@ require('onedarkpro').setup {
 }
 
 -- Set color
-vim.cmd 'colorscheme onedark'
+vim.cmd 'colorscheme catppuccin'
 vim.cmd.hi 'statusline guibg=NONE'
