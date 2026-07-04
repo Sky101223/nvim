@@ -6,10 +6,10 @@ require('aerial').setup {
   icons = {
     Class = '',
     Function = '󰊕',
-    Method = '',
-    Variable = '',
-    Struct = '',
-    Constant = '',
+    Method = ' ',
+    Variable = ' ',
+    Struct = ' ',
+    Constant = ' ',
   },
   on_attach = function(bufnr)
     vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
