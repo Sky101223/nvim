@@ -5,7 +5,7 @@ require('vague').setup {
 
 -- Catppuccin
 require('catppuccin').setup {
-  flavour = 'mocha',
+  flavour = 'macchiato',
   styles = {
     keywords = { 'italic' },
     functions = { 'bold' },
@@ -31,19 +31,12 @@ require('catppuccin').setup {
   },
 
   highlight_overrides = {
-    mocha = function(mocha)
+    all = function(mocha)
       return {
         CursorLineNr = { fg = mocha.yellow },
-        TelescopeSelection = { bg = mocha.surface0 },
-        TelescopeSelectionCaret = { fg = mocha.yellow, bg = mocha.surface0 },
-        TelescopePromptPrefix = { fg = mocha.yellow },
-        FlashCurrent = { bg = mocha.peach, fg = mocha.base },
-        FlashMatch = { bg = mocha.red, fg = mocha.base },
-        FlashLabel = { bg = mocha.teal, fg = mocha.base },
         NormalFloat = { bg = mocha.base },
         FloatBorder = { bg = mocha.base },
         FloatTitle = { bg = mocha.base },
-        RenderMarkdownCode = { bg = mocha.crust },
         Pmenu = { bg = mocha.base },
       }
     end,
