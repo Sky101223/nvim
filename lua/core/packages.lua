@@ -18,7 +18,7 @@ Sky.packages = {
   },
 
   imports = {
-    'ui',
+    -- 'ui',
     'lsp',
     'editor',
   },

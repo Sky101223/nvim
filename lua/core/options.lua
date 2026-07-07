@@ -76,7 +76,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.inccommand = 'split'
 
 -- Do not show which line your cursor is on
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 5
@@ -94,3 +94,5 @@ vim.o.cmdheight = 0
 require('vim._core.ui2').enable {
   enable = false,
 }
+
+vim.cmd.hi 'statusline guibg=NONE'
