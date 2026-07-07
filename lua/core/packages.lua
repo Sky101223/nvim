@@ -5,6 +5,8 @@ Sky.packages = {
     { src = 'https://github.com/vague-theme/vague.nvim' },
     { src = 'https://github.com/catppuccin/nvim' },
     { src = 'https://github.com/olimorris/onedarkpro.nvim' },
+    { src = 'https://github.com/rebelot/kanagawa.nvim' },
+    { src = 'https://github.com/nvim-lualine/lualine.nvim' },
     { src = 'https://github.com/stevearc/conform.nvim' },
     { src = 'https://github.com/bullets-vim/bullets.vim' },
     { src = 'https://github.com/mason-org/mason.nvim' },
@@ -18,7 +20,7 @@ Sky.packages = {
   },
 
   imports = {
-    -- 'ui',
+    'ui',
     'lsp',
     'editor',
   },

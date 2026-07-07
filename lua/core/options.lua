@@ -77,6 +77,7 @@ vim.opt.inccommand = 'split'
 
 -- Do not show which line your cursor is on
 vim.opt.cursorline = true
+vim.opt.cursorlineopt = 'number'
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 5
@@ -90,9 +91,10 @@ vim.o.showtabline = 0
 require 'core.folding'
 
 -- Cmdline
-vim.o.cmdheight = 0
+-- vim.o.cmdheight = 0
 require('vim._core.ui2').enable {
-  enable = false,
+  enable = true,
 }
 
 vim.cmd.hi 'statusline guibg=NONE'
+vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE', ctermbg = 'NONE' })
