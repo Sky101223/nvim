@@ -91,9 +91,9 @@ vim.o.showtabline = 0
 require 'core.folding'
 
 -- Cmdline
--- vim.o.cmdheight = 0
+vim.o.cmdheight = 0
 require('vim._core.ui2').enable {
-  enable = true,
+  enable = false,
 }
 
 vim.cmd.hi 'statusline guibg=NONE'

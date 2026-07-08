@@ -5,7 +5,7 @@ Sky.packages = {
     { src = 'https://github.com/vague-theme/vague.nvim' },
     { src = 'https://github.com/catppuccin/nvim' },
     { src = 'https://github.com/olimorris/onedarkpro.nvim' },
-    { src = 'https://github.com/rebelot/kanagawa.nvim' },
+    { src = 'https://github.com/rose-pine/neovim' },
     { src = 'https://github.com/nvim-lualine/lualine.nvim' },
     { src = 'https://github.com/stevearc/conform.nvim' },
     { src = 'https://github.com/bullets-vim/bullets.vim' },
@@ -17,12 +17,18 @@ Sky.packages = {
     { src = 'https://github.com/stevearc/oil.nvim' },
     { src = 'https://github.com/lewis6991/gitsigns.nvim' },
     { src = 'https://github.com/attilarepka/header.nvim' },
+
+    -- Leetcode
+    { src = 'https://github.com/kawre/leetcode.nvim' },
+    { src = 'https://github.com/MunifTanjim/nui.nvim' },
+    { src = 'https://github.com/nvim-lua/plenary.nvim' },
   },
 
   imports = {
-    'ui',
     'lsp',
     'editor',
+    'leetcode',
+    'ui',
   },
 }
 
