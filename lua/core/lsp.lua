@@ -18,10 +18,10 @@ vim.diagnostic.config {
   severity_sort = true,
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = 'E',
-      [vim.diagnostic.severity.WARN] = 'W',
-      [vim.diagnostic.severity.INFO] = 'I',
-      [vim.diagnostic.severity.HINT] = 'H',
+      [vim.diagnostic.severity.ERROR] = '', -- E
+      [vim.diagnostic.severity.WARN] = '', -- W
+      [vim.diagnostic.severity.INFO] = '', -- I
+      [vim.diagnostic.severity.HINT] = '', -- H
     },
     numhl = {
       [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
@@ -40,12 +40,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- [completion]
     if client:supports_method 'textDocument/completion' then
-      -- local chars = {}
-      -- for i = 32, 126 do
-      --   table.insert(chars, string.char(i))
-      -- end
-      --
-      -- client.server_capabilities.completionProvider.triggerCharacters = chars
+      local chars = {}
+      for i = 32, 126 do
+        table.insert(chars, string.char(i))
+      end
+
+      client.server_capabilities.completionProvider.triggerCharacters = chars
       vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
     end
 

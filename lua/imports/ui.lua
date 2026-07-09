@@ -1,8 +1,3 @@
--- Vague
-require('vague').setup {
-  transparent = true,
-}
-
 -- Catppuccin
 require('catppuccin').setup {
   flavour = 'macchiato',
@@ -43,28 +38,22 @@ require('catppuccin').setup {
   },
 }
 
--- One Dark Pro
-require('onedarkpro').setup {
-  styles = {
-    comments = 'italic',
-  },
-  options = {
-    -- cursorline = true,
-    transparency = true,
-    terminal_colors = true,
-  },
-}
-
 -- Rose pine
 require('rose-pine').setup {
   variant = 'main',
 
   styles = {
     bold = true,
-    italic = true,
+    italic = false,
     transparency = true,
   },
 }
+
+-- Nord
+vim.g.nord_disable_background = false
+vim.g.nord_italic = false
+vim.g.nord_borders = true
+
 -- Set color
 vim.cmd 'colorscheme rose-pine'
 vim.cmd.hi 'statusline guibg=NONE'
@@ -75,7 +64,7 @@ require('lualine').setup {
     icons_enabled = true,
     theme = 'auto',
     component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
   },
   sections = {
     lualine_a = { 'mode' },
