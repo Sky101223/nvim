@@ -136,3 +136,6 @@ vim.keymap.set('n', 'zM', function()
   fold_markdown_headings { 6, 5, 4, 3, 2 }
   vim.cmd 'normal! zz' -- center the cursor line on screen
 end, { desc = '[P]Fold all headings level 2 or above' })
+
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
