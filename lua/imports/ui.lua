@@ -1,6 +1,6 @@
 -- Catppuccin
 require('catppuccin').setup {
-  flavour = 'macchiato',
+  flavour = 'mocha',
   styles = {
     keywords = { 'italic' },
     functions = { 'bold' },
@@ -44,15 +44,18 @@ require('rose-pine').setup {
 
   styles = {
     bold = true,
-    italic = true,
-    transparency = true,
+    italic = false,
+    transparency = false,
   },
 }
 
 -- Nord
 vim.g.nord_disable_background = false
 vim.g.nord_italic = false
-vim.g.nord_borders = true
+
+-- Everforest
+vim.g.everforest_background = 'hard'
+vim.g.everforest_transparent_background = 2
 
 -- Set color
 vim.cmd 'colorscheme rose-pine'

@@ -5,6 +5,7 @@ Sky.packages = {
     { src = 'https://github.com/catppuccin/nvim' },
     { src = 'https://github.com/rose-pine/neovim' },
     { src = 'https://github.com/shaunsingh/nord.nvim' },
+    { src = 'https://github.com/sainnhe/everforest' },
     { src = 'https://github.com/nvim-lualine/lualine.nvim' },
     { src = 'https://github.com/stevearc/conform.nvim' },
     { src = 'https://github.com/bullets-vim/bullets.vim' },

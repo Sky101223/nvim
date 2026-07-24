@@ -29,28 +29,8 @@ require('mini.icons').setup {
   },
 }
 
--- require('mini.surround').setup {
---   mappings = {
---     add = 'sa', -- Add surrounding in Normal and Visual modes
---     delete = 'sd', -- Delete surrounding
---     find = 'sf', -- Find surrounding (to the right)
---     find_left = 'sF', -- Find surrounding (to the left)
---     highlight = 'sh', -- Highlight surrounding
---     replace = 'sr', -- Replace surrounding
---     update_n_lines = 'sn', -- Update `n_lines`
---
---     suffix_last = 'l', -- Suffix to search with "prev" method
---     suffix_next = 'n', -- Suffix to search with "next" method
---   },
--- }
-
-require('mini.pick').setup()
+require('mini.pick').setup {}
 require('mini.extra').setup()
--- require('mini.git').setup()
--- require('mini.tabline').setup()
--- require('mini.indentscope').setup()
--- require('mini.notify').setup {}
--- require('mini.pairs').setup()
 require('mini.comment').setup()
 
 -- Keymaps for the 'mini.nvim' plugin
@@ -88,9 +68,9 @@ end, 'Pick highlight groups')
 map('<leader>fch', function()
   MiniExtra.pickers.history()
 end, 'Pick command history')
--- map('<leader>fcl', function()
---   MiniExtra.pickers.colorschemes()
--- end, 'Pick colorscheme')
+map('<leader>fcl', function()
+  MiniExtra.pickers.colorschemes()
+end, 'Pick colorscheme')
 
 map('<leader>fgb', function()
   MiniExtra.pickers.git_branches()
