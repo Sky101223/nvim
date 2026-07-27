@@ -1,23 +1,6 @@
 -- Mason
 require('mason').setup()
 
--- Outline
-require('aerial').setup {
-  icons = {
-    Class = '',
-    Function = '󰊕',
-    Method = ' ',
-    Variable = ' ',
-    Struct = ' ',
-    Constant = ' ',
-  },
-  on_attach = function(bufnr)
-    vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
-    vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
-  end,
-}
-vim.keymap.set('n', '<leader>o', ':AerialToggle!<CR>', { desc = 'Outline' })
-
 -- Formatting
 vim.g.disable_autoformat = false
 vim.keymap.set('n', '<leader>tf', function()
