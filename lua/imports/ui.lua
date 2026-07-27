@@ -55,10 +55,16 @@ vim.g.nord_italic = false
 
 -- Everforest
 vim.g.everforest_background = 'hard'
-vim.g.everforest_transparent_background = 2
+vim.g.everforest_transparent_background = 0
+
+-- Vscode
+require('vscode').setup {
+  italic_comments = true,
+  italic_inlayhints = true,
+}
 
 -- Set color
-vim.cmd 'colorscheme rose-pine'
+vim.cmd 'colorscheme everforest'
 vim.cmd.hi 'statusline guibg=NONE'
 
 -- Lualine
