@@ -6,9 +6,10 @@ Sky.packages = {
     { src = 'https://github.com/rose-pine/neovim' },
     { src = 'https://github.com/shaunsingh/nord.nvim' },
     { src = 'https://github.com/sainnhe/everforest' },
-    { src = 'https://github.com/Mofiqul/vscode.nvim' },
 
     { src = 'https://github.com/nvim-lualine/lualine.nvim' },
+    { src = 'https://github.com/archie-judd/blink-cmp-words' },
+    { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1.x' },
     { src = 'https://github.com/stevearc/conform.nvim' },
     { src = 'https://github.com/bullets-vim/bullets.vim' },
     { src = 'https://github.com/mason-org/mason.nvim' },
@@ -43,6 +44,7 @@ Sky.load = function()
     once = true,
     callback = function()
       vim.cmd 'packloadall!'
+
       for _, file in ipairs(Sky.packages.imports) do
         local mod = 'imports.' .. file
         local ok, err = pcall(require, mod)
@@ -50,6 +52,8 @@ Sky.load = function()
           vim.notify(string.format('Failed to load %s:\n%s', mod, err), vim.log.levels.ERROR)
         end
       end
+
+      Sky.colorscheme 'nord'
     end,
   })
 end
