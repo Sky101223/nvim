@@ -27,11 +27,11 @@ Sky.packages = {
     { src = 'https://github.com/nvim-lua/plenary.nvim' },
   },
 
-  imports = {
+  modules = {
     'lsp',
     'editor',
-    'leetcode',
     'ui',
+    'leetcode',
   },
 }
 
@@ -45,15 +45,15 @@ Sky.load = function()
     callback = function()
       vim.cmd 'packloadall!'
 
-      for _, file in ipairs(Sky.packages.imports) do
-        local mod = 'imports.' .. file
+      for _, file in ipairs(Sky.packages.modules) do
+        local mod = 'packages.' .. file
         local ok, err = pcall(require, mod)
         if not ok then
           vim.notify(string.format('Failed to load %s:\n%s', mod, err), vim.log.levels.ERROR)
         end
       end
 
-      Sky.colorscheme 'nord'
+      Sky.colorscheme(Sky.theme) -- Set Theme
     end,
   })
 end
