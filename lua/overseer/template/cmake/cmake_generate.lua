@@ -4,13 +4,8 @@ return {
     local args = {
       '-S',
       '.',
-      '-B',
-      'build',
       '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON',
     }
-
-    table.insert(args, '-G')
-    table.insert(args, 'Ninja')
 
     return {
       cmd = 'cmake',
