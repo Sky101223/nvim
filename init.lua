@@ -1,6 +1,6 @@
 Sky = {}
 
-Sky.theme = 'nord' --  Current theme
+Sky.theme = 'catppuccin' --  Current theme
 
 -- Basic Configuration & LSP
 for _, core_file in ipairs(require 'core') do
