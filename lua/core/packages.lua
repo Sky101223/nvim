@@ -20,18 +20,13 @@ Sky.packages = {
     { src = 'https://github.com/stevearc/oil.nvim' },
     { src = 'https://github.com/lewis6991/gitsigns.nvim' },
     { src = 'https://github.com/attilarepka/header.nvim' },
-
-    -- Leetcode
-    { src = 'https://github.com/kawre/leetcode.nvim' },
-    { src = 'https://github.com/MunifTanjim/nui.nvim' },
-    { src = 'https://github.com/nvim-lua/plenary.nvim' },
+    { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
   },
 
   modules = {
     'lsp',
     'editor',
     'ui',
-    'leetcode',
   },
 }
 

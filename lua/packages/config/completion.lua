@@ -10,13 +10,13 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'CmdlineEnter' }, {
         documentation = {
           auto_show = true,
           window = {
-            border = 'single',
+            border = 'rounded',
             scrollbar = false,
           },
         },
 
         menu = {
-          border = 'single',
+          border = 'rounded',
           auto_show = true,
           auto_show_delay_ms = 0,
           scrollbar = false,
